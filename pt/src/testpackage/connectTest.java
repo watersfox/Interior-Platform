@@ -8,7 +8,7 @@ public class connectTest {
 		int n2;
 		int n3;
 		int n4;
-		int n5;
+		//int n5;
 		
 		for(int i=0; i<50; i++) {
 			if(i%2==0)
