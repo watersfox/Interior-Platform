@@ -1,6 +1,6 @@
 package dars;
 
-public class dd {
+public class dazft {
 
 	public static void main(String[] args) {
 
