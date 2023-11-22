@@ -1,5 +1,6 @@
 package testpackage;
 
+//연동테스트
 public class connectTest {
 	public static void main(String[] args){
 		
