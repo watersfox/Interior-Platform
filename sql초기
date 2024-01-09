@@ -1,0 +1,216 @@
+CREATE TABLE `Company` (
+	`companyId`	bigint(20)	NOT NULL,
+	`name`	varchar(255)	NOT NULL,
+	`phone`	varchar(11)	NOT NULL,
+	`ceoName`	varchar(255)	NOT NULL,
+	`content`	varchar(255)	NULL,
+	`careerYears`	int(3)	NOT NULL,
+	`address`	varchar(255)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `Customer` (
+	`userId`	bigint(20)	NOT NULL,
+	`password`	varchar(255)	NOT NULL,
+	`name`	varchar(100)	NOT NULL,
+	`phone`	varchar(11)	NOT NULL,
+	`email`	varchar(255)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `Review` (
+	`reviewNumber`	bigint(20)	NOT NULL,
+	`userId`	bigint(20)	NOT NULL,
+	`companyId`	bigint(20)	NOT NULL,
+	`title`	varchar(255)	NOT NULL,
+	`content`	varchar(255)	NULL,
+	`imageUrl`	text	NULL,
+	`rating`	int(1)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL,
+	`modifiedDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `LocationCode` (
+	`locationCode`	int(3)	NOT NULL,
+	`name`	varchar(20)	NOT NULL
+);
+
+CREATE TABLE `COM_LOC` (
+	`companyId`	bigint(20)	NOT NULL,
+	`locationCode`	int(3)	NOT NULL
+);
+
+CREATE TABLE `WorkExample` (
+	`workExNO`	bigint(20)	NOT NULL,
+	`companyId`	bigint(20)	NOT NULL,
+	`title`	text	NOT NULL,
+	`content`	varchar(255)	NULL,
+	`imageUrl`	text	NULL,
+	`address`	varchar(255)	NOT NULL,
+	`pyeong`	int(3)	NOT NULL,
+	`workType`	varchar(6)	NOT NULL,
+	`workPrice`	bigint(20)	NOT NULL,
+	`workWeeks`	int(3)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL,
+	`modifiedDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `InteriorWork` (
+	`workNumber`	bigint(20)	NOT NULL,
+	`companyId`	bigint(20)	NOT NULL,
+	`userId`	bigint(20)	NOT NULL,
+	`address`	varchar(255)	NOT NULL,
+	`workDate`	date	NOT NULL,
+	`workType`	varchar(6)	NOT NULL,
+	`workWeeks`	int(3)	NOT NULL,
+	`pyeong`	int(3)	NOT NULL,
+	`workPrice`	bigint(20)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `WorkType` (
+	`companyId`	bigint(20)	NOT NULL,
+	`workType`	varchar(6)	NOT NULL	COMMENT 'Unique'
+);
+
+CREATE TABLE `Comment` (
+	`commentNumber`	bigint(20)	NOT NULL,
+	`userId`	bigint(20)	NOT NULL,
+	`postNumber`	bigint(20)	NOT NULL,
+	`content`	varchar(255)	NULL,
+	`likes`	bigint(20)	NOT NULL,
+	`createdDate`	timestamp	NOT NULL,
+	`modifiedDate`	timestamp	NOT NULL
+);
+
+CREATE TABLE `CommunityPost` (
+	`postNumber`	bigint(20)	NOT NULL,
+	`userId`	bigint(20)	NOT NULL,
+	`title`	varchar(255)	NOT NULL,
+	`content`	varchar(255)	NULL,
+	`imageUrl`	text	NULL,
+	`views`	bigint(20)	NOT NULL,
+	`likes`	bigint(20)	NOT NULL,
+	`commentCnt`	bigint(20)	NULL,
+	`createdDate`	timestamp	NOT NULL,
+	`modifiedDate`	timestamp	NOT NULL
+);
+
+ALTER TABLE `Company` ADD CONSTRAINT `PK_COMPANY` PRIMARY KEY (
+	`companyId`
+);
+
+ALTER TABLE `Customer` ADD CONSTRAINT `PK_CUSTOMER` PRIMARY KEY (
+	`userId`
+);
+
+ALTER TABLE `Review` ADD CONSTRAINT `PK_REVIEW` PRIMARY KEY (
+	`reviewNumber`
+);
+
+ALTER TABLE `LocationCode` ADD CONSTRAINT `PK_LOCATIONCODE` PRIMARY KEY (
+	`locationCode`
+);
+
+ALTER TABLE `COM_LOC` ADD CONSTRAINT `PK_COM_LOC` PRIMARY KEY (
+	`companyId`,
+	`locationCode`
+);
+
+ALTER TABLE `WorkExample` ADD CONSTRAINT `PK_WORKEXAMPLE` PRIMARY KEY (
+	`workExNO`
+);
+
+ALTER TABLE `InteriorWork` ADD CONSTRAINT `PK_INTERIORWORK` PRIMARY KEY (
+	`workNumber`
+);
+
+ALTER TABLE `WorkType` ADD CONSTRAINT `PK_WORKTYPE` PRIMARY KEY (
+	`companyId`
+);
+
+ALTER TABLE `Comment` ADD CONSTRAINT `PK_COMMENT` PRIMARY KEY (
+	`commentNumber`
+);
+
+ALTER TABLE `CommunityPost` ADD CONSTRAINT `PK_COMMUNITYPOST` PRIMARY KEY (
+	`postNumber`
+);
+
+ALTER TABLE `Review` ADD CONSTRAINT `FK_Customer_TO_Review_1` FOREIGN KEY (
+	`userId`
+)
+REFERENCES `Customer` (
+	`userId`
+);
+
+ALTER TABLE `Review` ADD CONSTRAINT `FK_Company_TO_Review_1` FOREIGN KEY (
+	`companyId`
+)
+REFERENCES `Company` (
+	`companyId`
+);
+
+ALTER TABLE `COM_LOC` ADD CONSTRAINT `FK_Company_TO_COM_LOC_1` FOREIGN KEY (
+	`companyId`
+)
+REFERENCES `Company` (
+	`companyId`
+);
+
+ALTER TABLE `COM_LOC` ADD CONSTRAINT `FK_LocationCode_TO_COM_LOC_1` FOREIGN KEY (
+	`locationCode`
+)
+REFERENCES `LocationCode` (
+	`locationCode`
+);
+
+ALTER TABLE `WorkExample` ADD CONSTRAINT `FK_Company_TO_WorkExample_1` FOREIGN KEY (
+	`companyId`
+)
+REFERENCES `Company` (
+	`companyId`
+);
+
+ALTER TABLE `InteriorWork` ADD CONSTRAINT `FK_Company_TO_InteriorWork_1` FOREIGN KEY (
+	`companyId`
+)
+REFERENCES `Company` (
+	`companyId`
+);
+
+ALTER TABLE `InteriorWork` ADD CONSTRAINT `FK_Customer_TO_InteriorWork_1` FOREIGN KEY (
+	`userId`
+)
+REFERENCES `Customer` (
+	`userId`
+);
+
+ALTER TABLE `WorkType` ADD CONSTRAINT `FK_Company_TO_WorkType_1` FOREIGN KEY (
+	`companyId`
+)
+REFERENCES `Company` (
+	`companyId`
+);
+
+ALTER TABLE `Comment` ADD CONSTRAINT `FK_Customer_TO_Comment_1` FOREIGN KEY (
+	`userId`
+)
+REFERENCES `Customer` (
+	`userId`
+);
+
+ALTER TABLE `Comment` ADD CONSTRAINT `FK_CommunityPost_TO_Comment_1` FOREIGN KEY (
+	`postNumber`
+)
+REFERENCES `CommunityPost` (
+	`postNumber`
+);
+
+ALTER TABLE `CommunityPost` ADD CONSTRAINT `FK_Customer_TO_CommunityPost_1` FOREIGN KEY (
+	`userId`
+)
+REFERENCES `Customer` (
+	`userId`
+);
+
