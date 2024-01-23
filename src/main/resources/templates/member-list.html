@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member List</title>
+</head>
+<body>
+
+<h1>Member List</h1>
+
+<!-- Display the members -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over the members and display their information -->
+    <tr th:each="member : ${members.content}">
+        <td th:text="${member.userId}">User ID</td>
+        <td th:text="${member.password}">Password</td>
+        <td th:text="${member.name}">Name</td>
+        <td th:text="${member.phone}">Phone</td>
+        <td th:text="${member.email}">Email</td>
+        <td th:text="${member.createdDate}">Created Date</td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Display pagination links -->
+<div th:if="${members.totalPages > 1}">
+    <ul class="pagination">
+        <li th:class="${members.number == 0} ? 'disabled' : ''">
+            <a th:href="@{?page=0}" aria-label="First">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
+        </li>
+        <li th:class="${members.number == 0} ? 'disabled' : ''">
+            <a th:href="@{?page=${members.number - 1}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li th:each="page : ${#numbers.sequence(0, members.totalPages - 1)}" th:class="${page == members.number} ? 'active' : ''">
+            <a th:href="@{?page=${page}}" th:text="${page + 1}"></a>
+        </li>
+        <li th:class="${members.number == members.totalPages - 1} ? 'disabled' : ''">
+            <a th:href="@{?page=${members.number + 1}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        <li th:class="${members.number == members.totalPages - 1} ? 'disabled' : ''">
+            <a th:href="@{?page=${members.totalPages - 1}}" aria-label="Last">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
