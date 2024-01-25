@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/signup/vars.css" />
+    <link rel="stylesheet" href="/signup/style.css" />
+
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        appearance: none;
+        background: none;
+
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <title>회원가입</title>
+  </head>
+  <body>
+    <div class="div">
+      <div class="div2">
+        <div class="div3"></div>
+        <div class="div4">회원가입</div>
+      </div>
+      <div class="div2">
+        <div class="div5"></div>
+      </div>
+      <div class="div2">
+        <div class="div6"></div>
+      </div>
+      <div class="_010">
+        <div class="_0102"></div>
+        <div class="_0103">010</div>
+      </div>
+      <div class="div2">
+        <div class="div7"></div>
+        <div class="div8">닉네임</div>
+      </div>
+      <div class="div9">
+        <span>
+          <span class="div-9-span">닉네임</span>
+          <span class="div-9-span2">*</span>
+        </span>
+      </div>
+      <div class="div10">
+        <span>
+          <span class="div-10-span">전화번호</span>
+          <span class="div-10-span2">*</span>
+          <span></span>
+        </span>
+      </div>
+      <div class="div2">
+        <div class="div11"></div>
+        <div class="div12">비밀번호 확인</div>
+      </div>
+      <div class="div2">
+        <div class="div13"></div>
+        <div class="_5">5자 이상 영문, 숫자, 특수문자</div>
+      </div>
+      <div class="div14">
+        <span>
+          <span class="div-14-span">비밀번호</span>
+          <span class="div-14-span2">*</span>
+        </span>
+      </div>
+      <div class="div2">
+        <div class="div15"></div>
+        <div class="div16">중복 확인</div>
+      </div>
+      <div class="div2">
+        <div class="div17"></div>
+        <div class="_52">5자 이상 영소문, 숫자</div>
+      </div>
+      <div class="div18">
+        <span>
+          <span class="div-18-span">아이디</span>
+          <span class="div-18-span2">*</span>
+        </span>
+      </div>
+      <div class="div2">
+        <div class="div19"></div>
+        <div class="div20">형식 확인</div>
+      </div>
+      <div class="div2">
+        <div class="div21"></div>
+        <div class="div22"><input type="email" th:field="${userDTO.email}" placeholder="이메일을 입력하세요"/></div>
+      </div>
+      <div class="div23">
+        <span>
+          <span class="div-23-span">이메일</span>
+          <span class="div-23-span2">*</span>
+        </span>
+      </div>
+      <div class="div24">인테리어몬</div>
+      <div class="div25">회원가입</div>
+    </div>
+  </body>
+</html>
