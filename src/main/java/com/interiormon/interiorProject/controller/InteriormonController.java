@@ -38,6 +38,7 @@ class UserController {
 
     @PostMapping("login/re-login")
     public String signUp(@ModelAttribute @Valid UserDTO userDTO, BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
             return "member/signup";
         }
