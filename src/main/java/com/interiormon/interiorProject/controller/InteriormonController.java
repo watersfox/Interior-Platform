@@ -40,6 +40,7 @@ class UserController {
     public String signUp(@ModelAttribute @Valid UserDTO userDTO, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("userDTO", userDTO);
             return "member/signup";
         }
 
