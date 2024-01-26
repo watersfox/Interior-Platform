@@ -17,8 +17,8 @@ public class Comment {
     private int commentNumber;
     
     private String userId;
-    @ManyToOne
-    private User user;
+//    @ManyToOne
+//    private User user;
     
     private int postNumber;
     private String content;
