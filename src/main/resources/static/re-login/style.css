@@ -1,0 +1,80 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #f5eedd;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.div2 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 731px;
+  top: 431px;
+  width: 458px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div3 {
+  background: #f1e5d4;
+  border-radius: 10px;
+  width: 458px;
+  height: 55px;
+  position: absolute;
+  left: 731px;
+  top: 530px;
+}
+.div4 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 731px;
+  top: 530px;
+  width: 458px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div5 {
+  color: #9dd84b;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  position: absolute;
+  left: 773px;
+  top: 83px;
+  width: 375px;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div6 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  position: absolute;
+  left: 773px;
+  top: 150px;
+  width: 375px;
+  height: 79px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

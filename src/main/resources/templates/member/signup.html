@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/signup/vars.css" />
+    <link rel="stylesheet" href="/signup/style.css" />
+
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        appearance: none;
+        background: none;
+
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="div">
+      <form id="signupForm" action="/login/re-login" method="post" th:object="${userDTO}">
+        <div class="div3"></div>
+        <input form="signupForm" class="btn div4" type="submit" value="가입하기">
+        <div class="_0102"></div>
+        <div class="_0103"><input th:field="*{phone}" name="phone" id="phone" class="input-long" type="text" placeholder="전화번호를 입력하세요."></div>
+        <div class="div7"></div>
+        <div class="div8"><input th:field="*{nickname}" name="nickname" id="nickname" class="input-long" type="text" placeholder="닉네임을 입력하세요."></div>
+        <div class="div9">
+          <span>
+            <span class="div-9-span"><label for="nickname">닉네임</label></span>
+            <span class="div-9-span2">*</span>
+          </span>
+        </div>
+        <div class="div10">
+          <span>
+            <span class="div-10-span"><label for="phone">전화번호</label></span>
+            <span class="div-10-span2">*</span>
+          </span>
+        </div>
+        <div class="div11"></div>
+        <div class="div12"><input class="input-long" type="password" placeholder="비밀번호를 한번 더 입력하세요."></div>
+        <div class="div13"></div>
+        <div class="_5"><input th:field="*{password}" name="password" id="password" class="input-long" type="password" placeholder="비밀번호를 입력하세요."></div>
+        <div class="div14">
+          <span>
+            <span class="div-14-span"><label for="password">비밀번호</label></span>
+            <span class="div-14-span2">*</span>
+          </span>
+        </div>
+        <div class="div15"></div>
+        <input class="btn div16" type="submit" value="중복 확인"><!--아이디 중복 확인-->
+        <div class="div17"></div>
+        <div class="_52"><input th:field="*{userId}" name="userId" id="userId" class="input-short" type="text" placeholder="아이디를 입력하세요."></div>
+        <div class="div18">
+          <span>
+            <span class="div-18-span"><label for="userId">아이디</label></span>
+            <span class="div-18-span2">*</span>
+          </span>
+        </div>
+        <input class="btn div19" type="submit" value="중복 확인"> <!--닉네임 중복 확인-->
+        <input class="btn div20" type="submit" value="중복 확인"> <!--이메일 중복 확인-->
+        <div class="div21"></div>
+        <div class="div22"><input th:field="*{email}" name="email" id="email" class="input-short" type="email" placeholder="이메일을 입력하세요."></div>
+        <div class="div23">
+          <span>
+            <span class="div-23-span"><label for="email">이메일</label></span>
+            <span class="div-23-span2">*</span>
+          </span>
+        </div>
+        <div class="div24">인테리어몬</div>
+        <div class="div25">회원가입</div>
+      </form>
+    </div>
+  </body>
+</html>
