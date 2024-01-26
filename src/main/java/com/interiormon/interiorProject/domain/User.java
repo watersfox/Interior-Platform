@@ -2,14 +2,16 @@ package com.interiormon.interiorProject.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -20,4 +22,5 @@ public class User {
     private String phone;
     private String email;
     private LocalDateTime createdDate;
+
 }

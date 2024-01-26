@@ -25,7 +25,6 @@ public class UserDTO {
 
     @Pattern(regexp = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$", message = "이메일 형식이 올바르지 않습니다.")
     private String email;
-
     @Builder
     public UserDTO(String userId, String password, String nickname, String phone, String email) {
         this.userId = userId;

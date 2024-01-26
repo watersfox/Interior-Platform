@@ -17,18 +17,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void signUp(UserDTO userDTO) {
-
+        
+        // 아이디 중복 방지 로직
         if (userRepository.existsByUserId(userDTO.getUserId())) {
             throw new RuntimeException("이미 사용 중인 아이디입니다.");
         }
 
-        User customer = new User();
-        customer.setUserId(userDTO.getUserId());
-        customer.setPassword(userDTO.getPassword());
-        customer.setNickname(userDTO.getNickname());
-        customer.setPhone(userDTO.getPhone());
-        customer.setEmail(userDTO.getEmail());
+        User user = User.builder()
+                .userId(userDTO.getUserId())
+                .email(userDTO.getEmail())
+                .password(userDTO.getPassword())
+                .nickname(userDTO.getNickname())
+                .phone(userDTO.getPhone())
+                .build();
 
-        userRepository.save(customer);
+        userRepository.save(user);
+    }
+
+    public boolean isUserIdExist(String userId){
+
+    return userRepository.existsByUserId(userId);
+    }
+
+    public boolean isEmailExist(String email){
+
+        return userRepository.existsByEmail(email);
+    }
+
+    public boolean isNicknameExist(String nickname){
+
+        return userRepository.existsByNickname(nickname);
     }
 }

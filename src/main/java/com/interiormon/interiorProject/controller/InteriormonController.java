@@ -36,18 +36,18 @@ class UserController {
         return "member/signup";
     }
 
-    @PostMapping("/member/signup")
+    @PostMapping("login/re-login")
     public String signUp(@ModelAttribute @Valid UserDTO userDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "member/signup";
         }
 
         userService.signUp(userDTO);
-        return "redirect:login/re-login";
+        return "redirect:/login/re-login";
     }
 
-    @GetMapping("/signup-success")
-    public String signUpSuccess() {
+    @GetMapping("/login/re-login")
+    public String reLogin() {
         return "login/re-login";
     }
 }
