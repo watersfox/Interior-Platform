@@ -52,19 +52,4 @@ public class UserServiceImpl implements UserService {
 
         return validatorResult;
     }
-
-    public boolean isUserIdExist(String userId){
-
-    return userRepository.existsByUserId(userId);
-    }
-
-    public boolean isEmailExist(String email){
-
-        return userRepository.existsByEmail(email);
-    }
-
-    public boolean isNicknameExist(String nickname){
-
-        return userRepository.existsByNickname(nickname);
-    }
 }

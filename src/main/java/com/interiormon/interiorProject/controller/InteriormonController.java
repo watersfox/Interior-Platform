@@ -57,7 +57,7 @@ class UserController {
         return "member/signup";
     }
 
-    @PostMapping("/login/re-login")
+    @PostMapping("/member/signup-ok")
     public String signUp(@ModelAttribute @Valid UserDTO userDTO, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
@@ -73,13 +73,13 @@ class UserController {
 
 
         userService.signUp(userDTO);
-        return "redirect:/login/re-login";
+        return "redirect:/member/signup-ok";
 
     }
 
-    @GetMapping("/login/re-login")
+    @GetMapping("/member/signup-ok")
     public String reLogin() {
-        return "login/re-login";
+        return "member/signup-ok";
     }
 
     @GetMapping("/login/login")

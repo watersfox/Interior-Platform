@@ -439,6 +439,38 @@
   justify-content: left;
 }
 
+.pwerror2 {
+  color: red;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 1196px;
+  top: 455px;
+  width: 190px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.div26 {
+  color: red;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 1196px;
+  top: 724px;
+  width: 200px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
 input.input-long {
   width: 458px;
   height: 55px;
