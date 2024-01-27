@@ -94,7 +94,7 @@
   border-style: solid;
   border-color: #d9d9d9;
   border-width: 5px;
-  width: 332px;
+  width: 458px;
   height: 55px;
   position: absolute;
   left: 731px;
@@ -248,19 +248,19 @@
   top: 354px;
 }
 .div16 {
-  color: #000000;
+  color: red;
   text-align: center;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 400;
   position: absolute;
-  left: 1076px;
+  left: 1196px;
   top: 354px;
-  width: 111px;
+  width: 200px;
   height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 .div17 {
   background: #ffffff;
@@ -268,7 +268,7 @@
   border-style: solid;
   border-color: #d9d9d9;
   border-width: 5px;
-  width: 332px;
+  width: 458px;
   height: 55px;
   position: absolute;
   left: 731px;
@@ -313,33 +313,34 @@
   font-weight: 400;
 }
 .div19 {
-  background: #f1e5d4;
-  border-radius: 10px;
-  width: 111px;
-  height: 55px;
-  position: absolute;
-  left: 1078px;
-  top: 623px;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-}
-.div20 {
-  background: #f1e5d4;
-  color: #000000;
-  border-radius: 10px;
+  color: red;
   text-align: center;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 400;
   position: absolute;
-  left: 1078px;
-  top: 253px;
-  width: 111px;
+  left: 1196px;
+  top: 623px;
+  width: 200px;
   height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+}
+.div20 {
+  color: red;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 1196px;
+  top: 253px;
+  width: 200px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 .div21 {
   background: #ffffff;
@@ -347,7 +348,7 @@
   border-style: solid;
   border-color: #d9d9d9;
   border-width: 5px;
-  width: 332px;
+  width: 458px;
   height: 55px;
   position: absolute;
   left: 731px;
@@ -420,6 +421,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pwerror {
+  color: red;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 1196px;
+  top: 522px;
+  width: 200px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 input.input-long {

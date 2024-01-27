@@ -5,6 +5,12 @@ import com.interiormon.interiorProject.dto.UserDTO;
 import com.interiormon.interiorProject.persistence.UserRepository;
 import com.interiormon.interiorProject.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,6 +38,19 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         userRepository.save(user);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Map<String, String> validateHandling(Errors errors) {
+        Map<String, String> validatorResult = new HashMap<>();
+
+        for (FieldError error : errors.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s", error.getField());
+            validatorResult.put(validKeyName, error.getDefaultMessage());
+        }
+
+        return validatorResult;
     }
 
     public boolean isUserIdExist(String userId){
