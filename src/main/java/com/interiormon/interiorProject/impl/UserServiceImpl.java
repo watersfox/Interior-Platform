@@ -23,11 +23,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void signUp(UserDTO userDTO) {
-        
-        // 아이디 중복 방지 로직
-        if (userRepository.existsByUserId(userDTO.getUserId())) {
-            throw new RuntimeException("이미 사용 중인 아이디입니다.");
-        }
 
         User user = User.builder()
                 .userId(userDTO.getUserId())
@@ -51,5 +46,10 @@ public class UserServiceImpl implements UserService {
         }
 
         return validatorResult;
+    }
+
+    public boolean checkUserIdAndPassword(String userId, String password) {
+        User user = userRepository.findByUserIdAndPassword(userId, password);
+        return user != null;
     }
 }

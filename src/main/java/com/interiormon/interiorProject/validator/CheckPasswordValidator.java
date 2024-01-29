@@ -11,8 +11,10 @@ public class CheckPasswordValidator extends AbstractValidator<UserDTO> {
 
     @Override
     protected void doValidate(UserDTO userDTO, Errors errors) {
-        if (!userDTO.getPassword().equals(userDTO.getPassword2())) {
-            errors.rejectValue("password2", "비밀번호 불일치", "비밀번호가 일치하지 않습니다.");
+        if (userDTO.getPassword()!=null && userDTO.getPassword2()!=null){
+            if (!userDTO.getPassword().equals(userDTO.getPassword2())) {
+                errors.rejectValue("password2", "비밀번호 불일치", "비밀번호가 일치하지 않습니다.");
+            }
         }
     }
 }

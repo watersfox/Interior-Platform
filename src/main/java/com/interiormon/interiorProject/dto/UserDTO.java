@@ -20,7 +20,7 @@ public class UserDTO {
     private String password;
 
     private String password2;
-
+    
     @NotBlank(message = "닉네임을 입력하세요.")
     private String nickname;
 
@@ -29,5 +29,4 @@ public class UserDTO {
 
     @Pattern(regexp = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$", message = "올바르지 않은 이메일입니다.")
     private String email;
-
 }

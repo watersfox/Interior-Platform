@@ -23,5 +23,6 @@ public abstract class AbstractValidator<T> implements Validator {
         }
     }
 
+
     protected abstract void doValidate(final T userDTO, final Errors errors);
 }

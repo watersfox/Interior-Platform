@@ -31,31 +31,35 @@
     </style>
     <title>로그인</title>
   </head>
-  <body>
+  <body style="overflow-x: hidden; overflow-y: hidden">
     <div class="div">
-      <div class="div2">
-        <span>
-          <span class="div-2-span">로그인</span>
-          <span class="div-2-span2">*</span>
-        </span>
-      </div>
-      <div class="div3">
-        <div class="div4"></div>
-        <div class="div5">로그인</div>
-      </div>
-      <div class="div3">
-        <div class="div6"></div>
-        <div class="div7">비밀번호</div>
-      </div>
-      <div class="div3">
-        <div class="div8"></div>
-        <div class="div9">이메일</div>
-      </div>
-      <div class="div10">아이디 찾기</div>
-      <div class="div11">비밀번호 찾기</div>
-      <a class="div12" href="/member/signup">회원가입</a>
-      <a class="div13" href="/">인테리어몬</a>
-      <div class="div14">로그인</div>
+      <form id="loginForm" action="/login/login-ok" method="post">
+        <div class="div2">
+          <span>
+            <span class="div-2-span">로그인</span>
+            <span class="div-2-span2">*</span>
+          </span>
+        </div>
+        <div class="div3">
+          <div class="div4"></div>
+          <input form="loginForm" class="btn div5" type="submit" value="로그인" tabindex="-1">
+        </div>
+        <div class="div3">
+          <div class="div6"></div>
+          <input class="div7" type="password" placeholder="비밀번호" tabindex="2" name="password" id="password">
+        </div>
+        <div class="div3">
+          <div class="div8"></div>
+          <input class="div9" type="text" placeholder="아이디" tabindex="1" name="userId" id="userId" th:value="${userId}">
+        </div>
+        <div class="div10">아이디 찾기</div>
+        <div class="div11">비밀번호 찾기</div>
+        <a class="div12" href="/member/signup" tabindex="-1">회원가입</a>
+        <a class="div13" href="/" tabindex="-1">인테리어몬</a>
+        <div class="div14">로그인</div>
+        <div class="div15" th:if="${loginError}" th:text="${loginError}"></div>
+<!--   div6     -->
+      </form>
     </div>
   </body>
 </html>
