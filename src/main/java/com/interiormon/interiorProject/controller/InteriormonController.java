@@ -77,7 +77,7 @@ class UserController {
 
     @GetMapping("member/signup-ok")
     public String reLogin() {
-        return "member/signup-ok";
+        return "/member/signup-ok";
     }
 
     @GetMapping("login/login")
