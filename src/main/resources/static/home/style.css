@@ -405,11 +405,7 @@
   width: 135px;
   height: 32px;
 }
-.image-2 {
-  width: 70px;
-  height: 50px;
-  object-fit: cover;
-}
+
 .notifications {
   width: 65px;
   height: 74px;
@@ -538,12 +534,4 @@ nav#menu_nav a {
 
 label.menu-btn:hover {
   cursor: pointer;
-}
-
-header {
-  /* 네비게이션 바를 상단에 고정시키기 */
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000; /* 다른 요소들보다 위에 표시되도록 설정 */
 }
