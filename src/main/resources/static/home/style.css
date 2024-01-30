@@ -502,3 +502,43 @@
 body {
   background: #f5eedd;
 }
+
+nav#menu_nav {
+  display: none;
+  background-color: #9dd84b;; /* Adjust background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a subtle effect */
+}
+
+nav#menu_nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav#menu_nav li {
+  width: 100%;
+  text-align: center;
+  padding: 10px; /* Adjust padding as needed */
+  border-bottom: 1px solid #e0e0e0; /* Optional: Add border between list items */
+}
+
+nav#menu_nav li:last-child {
+  border-bottom: none; /* Optional: Remove border for the last list item */
+}
+
+input#menu:checked + nav#menu_nav{
+  display: block;
+  width: 150px;
+  height: 130px;
+  position: absolute;
+  left: 1476px;
+  top: 175px;
+}
+nav#menu_nav a {
+  color: white;
+  user-select: none;
+}
+
+label.menu-btn:hover {
+  cursor: pointer;
+}
