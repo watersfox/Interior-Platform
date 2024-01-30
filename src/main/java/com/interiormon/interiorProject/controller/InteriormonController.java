@@ -2,13 +2,21 @@ package com.interiormon.interiorProject.controller;
 
 import com.interiormon.interiorProject.dto.UserDTO;
 import com.interiormon.interiorProject.service.UserService;
+import com.interiormon.interiorProject.validator.CheckEmailValidator;
+import com.interiormon.interiorProject.validator.CheckNicknameValidator;
+import com.interiormon.interiorProject.validator.CheckPasswordValidator;
+import com.interiormon.interiorProject.validator.CheckUserIdValidator;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 public class InteriormonController {
@@ -22,32 +30,91 @@ public class InteriormonController {
 }
 
 @Controller
+@RequiredArgsConstructor
+@Slf4j
 class UserController {
 
     private final UserService userService;
+    private final CheckUserIdValidator checkUserIdValidator;
+    private final CheckEmailValidator checkEmailValidator;
+    private final CheckNicknameValidator checkNicknameValidator;
+    private final CheckPasswordValidator checkPasswordValidator;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+
+    @InitBinder
+    public void validatorBinder(WebDataBinder binder) {
+        binder.addValidators(checkUserIdValidator);
+        binder.addValidators(checkEmailValidator);
+        binder.addValidators(checkNicknameValidator);
+        binder.addValidators(checkPasswordValidator);
     }
 
-    @GetMapping("/member/signup")
+    @GetMapping("member/signup")
     public String showSignUpForm(Model model) {
         model.addAttribute("userDTO", new UserDTO());
         return "member/signup";
     }
 
-    @PostMapping("login/re-login")
-    public String signUp(@ModelAttribute @Valid UserDTO userDTO, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+    @PostMapping("member/signup-ok")
+    public String signUp(@ModelAttribute @Valid UserDTO userDTO, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("userDTO", userDTO);
+
+            Map<String, String> validatorResult = userService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+
             return "member/signup";
         }
 
+
         userService.signUp(userDTO);
-        return "redirect:/login/re-login";
+        return "redirect:member/signup-ok";
+
     }
 
-    @GetMapping("/login/re-login")
+    @GetMapping("member/signup-ok")
     public String reLogin() {
-        return "login/re-login";
+        return "/member/signup-ok";
+    }
+
+    @GetMapping("login/login")
+    public String loginForm(Model model) {
+        model.addAttribute("userDTO", new UserDTO());
+        return "login/login";
+    }
+
+    @PostMapping("login/login-ok")
+    public String login(
+            @RequestParam(name = "userId") String userId,
+            @RequestParam(name = "password") String password,
+            HttpSession session,
+            Model model) {
+
+        if (userId == null || userId.trim().isEmpty()) {
+            model.addAttribute("userId", userId);
+            model.addAttribute("loginError", "아이디를 입력하세요.");
+            return "login/login";
+        }
+
+        if (password == null || password.trim().isEmpty()) {
+            model.addAttribute("userId", userId);
+            model.addAttribute("loginError", "비밀번호를 입력하세요.");
+            return "login/login";
+        }
+
+        if (!userService.checkUserIdAndPassword(userId, password)) {
+            model.addAttribute("userId", userId);
+            model.addAttribute("loginError", "유효하지 않은 아이디와 비밀번호입니다.");
+            return "login/login";
+        }
+        session.setAttribute("userId", userId);
+        String loggedInUserId = (String) session.getAttribute("userId");
+        System.out.println(loggedInUserId + "가 로그인했습니다.");
+
+        return "home";
+
     }
 }

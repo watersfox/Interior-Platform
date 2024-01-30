@@ -9,10 +9,6 @@
   position: relative;
   overflow: hidden;
 }
-.div {
-  position: absolute;
-  inset: 0;
-}
 .rectangle-32 {
   background: #f1e5d4;
   border-radius: 20px;
@@ -444,11 +440,11 @@
   left: 160px;
   bottom: 0px;
 }
-.div9 {
-  width: 1793px;
-  height: 140px;
-  position: static;
-}
+/*.div9 {*/
+/*  width: 1793px;*/
+/*  height: 140px;*/
+/*  position: static;*/
+/*}*/
 .phone {
   width: 40px;
   height: 40px;
@@ -501,4 +497,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+}
+
+body {
+  background: #f5eedd;
 }
