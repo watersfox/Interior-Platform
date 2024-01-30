@@ -406,11 +406,8 @@
   height: 32px;
 }
 .image-2 {
-  width: 197px;
-  height: 150px;
-  position: absolute;
-  left: 70px;
-  top: 100px;
+  width: 70px;
+  height: 50px;
   object-fit: cover;
 }
 .notifications {

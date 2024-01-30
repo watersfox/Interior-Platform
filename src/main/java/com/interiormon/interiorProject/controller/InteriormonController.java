@@ -1,5 +1,6 @@
 package com.interiormon.interiorProject.controller;
 
+import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
 import com.interiormon.interiorProject.service.UserService;
 import com.interiormon.interiorProject.validator.CheckEmailValidator;
@@ -116,7 +117,10 @@ class UserController {
             return "login/login";
         }
         session.setAttribute("userId", userId);
+        String nickname = userService.getNickname(userId);
+        session.setAttribute("nickname", nickname);
         model.addAttribute("userId", userId);
+        model.addAttribute("nickname", nickname);
         String loggedInUserId = (String) session.getAttribute("userId");
         System.out.println(loggedInUserId + "가 로그인했습니다.");
 

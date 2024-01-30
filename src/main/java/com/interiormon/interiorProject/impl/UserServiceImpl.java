@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserIdAndPassword(userId, password);
         return user != null;
     }
+
+    public String getNickname(String userId) {
+        String nickname = userRepository.findByUserId(userId).getNickname();
+        return nickname;
+    }
 }

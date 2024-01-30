@@ -12,4 +12,7 @@ public interface UserService {
     Map<String, String> validateHandling(Errors errors);
 
     boolean checkUserIdAndPassword(String userId, String password);
+
+    String getNickname(String userId);
+
 }
