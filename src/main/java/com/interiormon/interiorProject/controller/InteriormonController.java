@@ -1,6 +1,5 @@
 package com.interiormon.interiorProject.controller;
 
-import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
 import com.interiormon.interiorProject.service.UserService;
 import com.interiormon.interiorProject.validator.CheckEmailValidator;
@@ -25,14 +24,15 @@ public class InteriormonController {
     @GetMapping("/")
     public String home(Model model, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
+        String nickname = (String) session.getAttribute("nickname");
 
         if (userId != null) {
             model.addAttribute("userId", userId);
+            model.addAttribute("nickname", nickname);
         }
-        System.out.println(userId + "가 접속했습니다.");
+        System.out.println("userId = " +  userId + " " + "nickname = " + nickname );
         return "home";
     }
-
 }
 
 @Controller
@@ -121,8 +121,6 @@ class UserController {
         session.setAttribute("nickname", nickname);
         model.addAttribute("userId", userId);
         model.addAttribute("nickname", nickname);
-        String loggedInUserId = (String) session.getAttribute("userId");
-        System.out.println(loggedInUserId + "가 로그인했습니다.");
 
         return "home";
     }
