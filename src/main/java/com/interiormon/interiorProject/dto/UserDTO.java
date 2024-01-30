@@ -21,7 +21,7 @@ public class UserDTO {
 
     private String password2;
     
-    @NotBlank(message = "닉네임을 입력하세요.")
+    @Pattern(regexp = "(^^(?=.*[ㄱ-ㅎ가-힣a-zA-Z0-9])[ㄱ-ㅎ가-힣a-zA-Z0-9]{1,8}$)", message = "닉네임은 1~8자의 영문, 한글, 숫자만 사용해야 합니다.")
     private String nickname;
 
     @Pattern(regexp = "^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$", message = "올바르지 않은 전화번호입니다.")
