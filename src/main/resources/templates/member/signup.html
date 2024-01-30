@@ -33,7 +33,7 @@
   </head>
   <body style="overflow-x: hidden; overflow-y: hidden">
     <div class="div">
-      <form id="signupForm" action="member/signup-ok" method="post" th:object="${userDTO}">
+      <form id="signupForm" th:action="@{signup-ok}" method="post" th:object="${userDTO}">
         <div class="_0102"></div>
         <div class="_0103"><input th:field="*{phone}" name="phone" id="phone" class="input-long" type="text" placeholder="전화번호를 입력하세요." tabindex="6"></div>
         <span class="div26" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">휴대폰번호 형식 확인</span>

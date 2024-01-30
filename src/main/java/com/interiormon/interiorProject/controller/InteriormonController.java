@@ -22,8 +22,13 @@ import java.util.Map;
 public class InteriormonController {
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model, HttpSession session) {
+        String userId = (String) session.getAttribute("userId");
 
+        if (userId != null) {
+            model.addAttribute("userId", userId);
+        }
+        System.out.println(userId + "가 접속했습니다.");
         return "home";
     }
 
@@ -71,13 +76,13 @@ class UserController {
 
 
         userService.signUp(userDTO);
-        return "redirect:member/signup-ok";
+        return "redirect:/member/signup-ok";
 
     }
 
     @GetMapping("member/signup-ok")
     public String reLogin() {
-        return "/member/signup-ok";
+        return "member/signup-ok";
     }
 
     @GetMapping("login/login")
@@ -111,10 +116,22 @@ class UserController {
             return "login/login";
         }
         session.setAttribute("userId", userId);
+        model.addAttribute("userId", userId);
         String loggedInUserId = (String) session.getAttribute("userId");
         System.out.println(loggedInUserId + "가 로그인했습니다.");
 
         return "home";
+    }
 
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        // 세션에 저장된 사용자 정보 제거
+        session.removeAttribute("userId");
+
+        // 세션을 완전히 무효화
+        session.invalidate();
+
+        // 로그아웃 후 리다이렉트할 페이지 또는 뷰 이름 반환
+        return "redirect:/"; // 로그아웃 후 홈 화면으로 리다이렉트하도록 설정
     }
 }
