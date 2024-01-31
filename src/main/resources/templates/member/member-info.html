@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link rel="stylesheet" href="/member-info/vars.css" />-->
+<!--    <link rel="stylesheet" href="/member-info/style.css" />-->
+    <link rel="stylesheet" href="/global.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <title>회원정보</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img class="image-2" src="/image-20.png" alt="logo"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">시공사례</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">견적의뢰</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">고객리뷰</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">커뮤니티</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <th:block th:if="${userId == null}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login/login">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/member/signup">회원가입</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">고객센터</a>
+                            </li>
+                        </th:block>
+                        <th:block th:if="${userId != null}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/member/member-info" th:text="${nickname}+'님'">내정보</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">로그아웃</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">고객센터</a>
+                        </th:block>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+                <a href="/member/member-info">마이 프로필</a>
+                <a href="#">스크랩</a>
+                <a href="#">작성 게시글 목록</a>
+                <a href="#">작성 리뷰 목록</a>
+                <a href="#">작성 댓글 목록</a>
+                <a href="#">팔로우 목록</a>
+            </li>
+            <li><a href="#">견적신청 내역</a></li>
+            <li><a href="#">시공진행 내역</a></li>
+            <li><a href="#">문의 내역</a></li>
+            <li><a href="/member/edit-info">회원정보 수정</a></li>
+            <li><a href="/member/change-pw">비밀번호 변경</a></li>
+        </ul>
+    </div>
+</body>
+</html>

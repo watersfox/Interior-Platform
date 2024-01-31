@@ -15,4 +15,8 @@ public interface UserService {
 
     String getNickname(String userId);
 
+    UserDTO getUserDTOByUserId(String userId);
+
+    boolean checkNickname(String nickname);
+
 }
