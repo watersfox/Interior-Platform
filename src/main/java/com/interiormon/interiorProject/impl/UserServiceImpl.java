@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
                 .password(userDTO.getPassword())
                 .nickname(userDTO.getNickname())
                 .phone(userDTO.getPhone())
+                .introduce(userDTO.getIntroduce())
                 .build();
 
         userRepository.save(user);
@@ -51,5 +52,31 @@ public class UserServiceImpl implements UserService {
     public boolean checkUserIdAndPassword(String userId, String password) {
         User user = userRepository.findByUserIdAndPassword(userId, password);
         return user != null;
+    }
+
+    public String getNickname(String userId) {
+        String nickname = userRepository.findByUserId(userId).getNickname();
+        return nickname;
+    }
+
+    public UserDTO getUserDTOByUserId(String userId) {
+        User user = userRepository.findByUserId(userId);
+
+        if (user == null) {
+            return null;
+        }
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(user.getUserId());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setPhone(user.getPhone());
+        userDTO.setNickname(user.getNickname());
+        userDTO.setIntroduce(user.getIntroduce());
+
+        return userDTO;
+    }
+
+    public boolean checkNickname(String nickname) {
+        boolean isNickname = userRepository.existsByNickname(nickname);
+        return isNickname;
     }
 }

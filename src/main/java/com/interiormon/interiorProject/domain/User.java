@@ -30,5 +30,7 @@ public class User {
     private String phone;
     private String email;
     private LocalDateTime createdDate;
+    private String introduce;
+//    private String imageUrl;
 
 }

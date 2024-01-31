@@ -405,14 +405,7 @@
   width: 135px;
   height: 32px;
 }
-.image-2 {
-  width: 197px;
-  height: 150px;
-  position: absolute;
-  left: 70px;
-  top: 100px;
-  object-fit: cover;
-}
+
 .notifications {
   width: 65px;
   height: 74px;
