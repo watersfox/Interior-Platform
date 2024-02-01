@@ -23,13 +23,17 @@ import java.util.regex.Pattern;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class InteriormonController {
+public class UserController {
 
     private final UserService userService;
     private final CheckUserIdValidator checkUserIdValidator;
     private final CheckEmailValidator checkEmailValidator;
     private final CheckNicknameValidator checkNicknameValidator;
     private final CheckPasswordValidator checkPasswordValidator;
+
+    private static final String PHONE_NUMBER_PATTERN = "^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$";
+    private static final String NICKNAME_PATTERN = "^(?=.*[ㄱ-ㅎ가-힣a-zA-Z0-9])[ㄱ-ㅎ가-힣a-zA-Z0-9]{1,8}$";
+    private static final String PASSWORD_PATTERN = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}";
 
     @InitBinder
     public void validatorBinder(WebDataBinder binder) {
@@ -122,10 +126,11 @@ public class InteriormonController {
         return "home";
     }
 
-    @GetMapping("logout")
+    @GetMapping("login/logout")
     public String logout(HttpSession session) {
 
         session.removeAttribute("userId");
+        session.removeAttribute("nickname");
 
         session.invalidate();
 
@@ -164,8 +169,7 @@ public class InteriormonController {
         return "home";
     }
 
-    private static final String PHONE_NUMBER_PATTERN = "^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$";
-    private static final String NICKNAME_PATTERN = "^(?=.*[ㄱ-ㅎ가-힣a-zA-Z0-9])[ㄱ-ㅎ가-힣a-zA-Z0-9]{1,8}$";
+
 
     @PostMapping("member/edit-info-ok")
     public String editInfoOk(
@@ -229,20 +233,55 @@ public class InteriormonController {
 
     @GetMapping("member/change-pw")
     public String changePassword(HttpSession session, Model model) {
-//        String loggedUserId = (String) session.getAttribute("userId");
-//        String loggedNickname = (String) session.getAttribute("nickname");
-//
-//        if (loggedUserId != null) {
-//            UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
-//
-//            model.addAttribute("userDTO", userDTO);
-//            model.addAttribute("userId", loggedUserId);
-//            model.addAttribute("nickname", loggedNickname);
-//
-//            return "member/change-pw";
-//        }
+
         userService.setSessionNickname(session, model);
 
-        return "home";
+        return "member/change-pw";
+    }
+
+    @PostMapping("member/change-pw-ok")
+    public String changePasswordOk(
+            HttpSession session,
+            @RequestParam(name = "currentPassword") String password,
+            @RequestParam(name = "newPassword") String newPassword,
+            @RequestParam(name = "confirmPassword") String confirmPassword,
+            Model model) {
+
+        userService.setSessionNickname(session, model);
+        Pattern passwordPattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher passwordMatcher = passwordPattern.matcher(newPassword);
+        String loggedUserId = (String)session.getAttribute("userId");
+
+        if (password == null ||
+                password.trim().isEmpty() ||
+                !userService.checkUserIdAndPassword(loggedUserId, password)) {
+            model.addAttribute("passwordError", "유효하지않은 비밀번호입니다.");
+            return "member/change-pw";
+        }
+
+        if (!passwordMatcher.matches()) {
+            model.addAttribute("newPasswordError", "유효하지않은 비밀번호입니다.");
+            return "member/change-pw";
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            model.addAttribute("confirmPasswordError", "비밀번호가 일치하지 않습니다.");
+            return "member/change-pw";
+        }
+
+        System.out.println("유효성검사결과 = " + passwordMatcher.matches());
+
+
+        UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
+        userDTO.setPassword(newPassword);
+        userService.signUp(userDTO);
+
+        session.removeAttribute("userId");
+        session.removeAttribute("nickname");
+
+        session.invalidate();
+
+
+        return "member/signup-ok";
     }
 }
