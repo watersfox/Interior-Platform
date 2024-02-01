@@ -229,18 +229,20 @@ public class InteriormonController {
 
     @GetMapping("member/change-pw")
     public String changePassword(HttpSession session, Model model) {
-        String loggedUserId = (String) session.getAttribute("userId");
-        String loggedNickname = (String) session.getAttribute("nickname");
+//        String loggedUserId = (String) session.getAttribute("userId");
+//        String loggedNickname = (String) session.getAttribute("nickname");
+//
+//        if (loggedUserId != null) {
+//            UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
+//
+//            model.addAttribute("userDTO", userDTO);
+//            model.addAttribute("userId", loggedUserId);
+//            model.addAttribute("nickname", loggedNickname);
+//
+//            return "member/change-pw";
+//        }
+        userService.setSessionNickname(session, model);
 
-        if (loggedUserId != null) {
-            UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
-
-            model.addAttribute("userDTO", userDTO);
-            model.addAttribute("userId", loggedUserId);
-            model.addAttribute("nickname", loggedNickname);
-
-            return "member/change-pw";
-        }
         return "home";
     }
 }

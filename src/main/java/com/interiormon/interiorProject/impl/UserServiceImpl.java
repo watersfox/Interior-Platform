@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
+import org.springframework.ui.Model;
+import jakarta.servlet.http.HttpSession;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,4 +81,15 @@ public class UserServiceImpl implements UserService {
         boolean isNickname = userRepository.existsByNickname(nickname);
         return isNickname;
     }
+
+    public void setSessionNickname(HttpSession session, Model model) {
+        String loggedUserId = (String) session.getAttribute("userId");
+        String loggedNickname = (String) session.getAttribute("nickname");
+
+        if (loggedUserId != null) {
+            model.addAttribute("userId", loggedUserId);
+            model.addAttribute("nickname", loggedNickname);
+        }
+    }
+
 }

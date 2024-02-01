@@ -28,9 +28,11 @@ import java.util.regex.Pattern;
 
 public class EstimateController {
 
-	 @GetMapping("/estimate/application")
-	 public String start() {
+	private final UserService userService;
 
+	 @GetMapping("estimate/application")
+	 public String start(HttpSession session, Model model) {
+		 userService.setSessionNickname(session, model);
 	        return "estimate/견적신청";
 	    }
 	 
