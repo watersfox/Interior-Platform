@@ -12,6 +12,30 @@ header {
     object-fit: cover;
 }
 
+    
+#bellbox {
+ position: relative;
+ margin-top: 5px;
+ width: 30px; /* 크기 조절 */
+ height: 30px; /* 크기 조절 */
+ border-radius: 50%;
+ transition: background-color 0.5s ease;
+}
+
+#bellbox:hover {
+  background-color: lightgray;
+}
+
+.bi-bell {
+  position: absolute;
+  top: 22%; /* 서북쪽에 위치하도록 조절 */
+  left: 55%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 /* 자동완성 시 생기는 파란색 배경 없애기 */
 input:-webkit-autofill { -webkit-box-shadow: 0 0 0 00px #fff inset ; -webkit-text-fill-color: #000; }
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }
