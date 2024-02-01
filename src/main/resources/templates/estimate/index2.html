@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      /* height: 100%; */
+      overflow: hidden;
+      /* margin-left: 25%; 왼쪽 여백 25% */
+      /* margin-right: 20%; 오른쪽 여백 20%   */
+      overflow-y: auto;
+    }
+
+    header {
+  /* 네비게이션 바를 상단에 고정시키기 */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* 다른 요소들보다 위에 표시되도록 설정 */
+}
+
+    #main-container{
+      flex: 1;
+      display: flex;
+      flex-direction: row;  
+      margin-top: 56px; /* 네비게이션 바의 기본 높이가 56px일 경우, 실제 높이에 맞게 조절하세요. */
+
+    }
+    
+    
+      #left-container .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* 버튼을 가로로 정렬하면서 중앙 정렬 */ 
+  }
+
+  #left-container .button {
+  margin-right: 10px;
+  padding: 10;
+  height: 35px; /* 버튼의 높이 조절 */
+  line-height: 1px; /* 버튼 내부 텍스트의 수직 정렬을 위한 값 조절 */
+  min-width: 120px; /* 최소 너비 설정 */    
+  width: auto; /* 너비 자동 조절 */    
+  font-size: 16px; /* 텍스트 크기 조절 */
+  }
+
+  #left-container {
+  flex: 2; /* 왼쪽 컨테이너를 더 키우기 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬로 변경 */
+  justify-content: center;
+  background-color: white;
+  padding-left: 5%; /* 여백 적용 */
+}
+
+    .card {
+      
+      width: 450px;
+      height: 200px;
+      margin: 10px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-left: 15%; /* 카드를 왼쪽으로 이동시킴 */
+
+    }
+
+    .button-container {
+      display: flex;
+      flex-flow: row wrap;
+
+      justify-content: flex-start;
+        width: 400px;
+      margin-top: 20px;
+    }
+
+    .button {
+      margin: 8px 0px 0px;
+      padding: 0px 10px;
+      background-color: transparent;
+      color: black;
+      border: 0.5px solid #A9A6A4;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      font-size: 14px !important; /* 기본 폰트 사이즈 설정 */
+    }
+
+    .button:hover {
+      background-color: #eee;
+      color: black;
+      border-color: #A9A6A4;
+    }
+
+    #right-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #eee;
+      top: 0;
+      position: sticky;
+
+    }
+
+    
+    #right-container > #result{
+      width:10%;
+      height:30%;
+      background-color: white;
+      position: fixed;
+
+        }
+    
+    #cardtext {
+      width : 400px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+    }    
+
+  </style>
+</head>
+<body>
+  <header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div id="main-container">
+  <div id="left-container">
+    <!-- First Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 1', 'Button 1')">현관 신발장</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 2')">타일</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 3')">가벽 설치</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 4')">현관 중문</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 5')">현관 망</button>
+      </div>
+    </div>
+
+    <!-- Second Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 2', 'Button 1')">전체 실크</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 2')">전체 합지</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 3')">거실 실크+방 합지</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 4')">기타</button>
+      </div>
+    </div>
+
+    <!-- 3 Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 3', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 3', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 3', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 3', 'Button 4')">Button 4</button>
+      </div>
+    </div>    
+
+    <!-- 4 Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 4', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 4', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 4', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 4', 'Button 4')">Button 4</button>
+      </div>
+    </div>    
+    
+    <!-- 5 Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 5', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 5', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 5', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 5', 'Button 4')">Button 4</button>
+      </div>
+    </div>        
+
+    <!-- 6 Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 6', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 6', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 6', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 6', 'Button 4')">Button 4</button>
+      </div>
+    </div>         
+    
+    <!-- 7 Card -->
+    <div class="card">
+      <p id = "cardtext">현관</p>
+
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 7', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 7', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 7', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 7', 'Button 4')">Button 4</button>
+      </div>
+    </div>  
+    
+
+    <!-- Add more cards as needed -->
+    <!-- ... -->
+
+  </div>
+
+  <div id="right-container">
+    <div id="result">result</div>
+  </div>
+</div>  
+
+<script>
+  // 각 카드의 버튼별 가격 설정
+  const cardButtonPrices = {
+    'Card 1': {
+      'Button 1': 10000,
+      'Button 2': 20000,
+      'Button 3': 30000,
+    },
+    'Card 2': {
+      'Button 1': 5000,
+      'Button 2': 10000,
+      'Button 3': 15000,
+    },
+    // 다른 카드들에 대해서도 버튼 가격을 설정해주세요
+    // ...
+  };
+
+  // 초기 결과값 설정
+  let cardTotalPrices = {};
+
+  function showResult(cardName, buttonName) {
+    // 현재 카드에 대한 총 가격을 가져오거나 없으면 0으로 초기화
+    const cardTotalPrice = cardTotalPrices[cardName] || 0;
+
+    // 버튼을 클릭할 때마다 가격을 누적하여 더함
+    const price = cardButtonPrices[cardName] && cardButtonPrices[cardName][buttonName] || 0;
+
+    // 같은 버튼을 누를 경우 누적 가격에 변화 없도록 설정
+    if (!cardTotalPrices[cardName]) {
+      cardTotalPrices[cardName] = cardTotalPrice + price;
+    }
+
+    // 현재까지의 총 가격 계산
+    const totalPrice = Object.values(cardTotalPrices).reduce((acc, val) => acc + val, 0);
+
+    // 결과를 표시
+    document.getElementById('result').innerText = `You clicked: ${cardName} - ${buttonName}. Total Price: ${totalPrice}원`;
+  }
+</script>
+</body>
+</html>
