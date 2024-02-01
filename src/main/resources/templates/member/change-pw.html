@@ -9,25 +9,25 @@
 </head>
 <body>
 <div class="container">
-    <h2>Password Change</h2>
+    <h2>비밀번호 변경</h2>
     <form th:action="@{/change-password}" method="post">
 
         <div class="form-group">
-            <label for="currentPassword">Current Password:</label>
+            <label for="currentPassword">현재 비밀번호</label>
             <input type="password" id="currentPassword" name="currentPassword" required />
         </div>
 
         <div class="form-group">
-            <label for="newPassword">New Password:</label>
+            <label for="newPassword">변경할 비밀번호</label>
             <input type="password" id="newPassword" name="newPassword" required />
         </div>
 
         <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
+            <label for="confirmPassword">비밀번호 확인</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required />
         </div>
 
-        <button type="submit">비밀번호 변경</button>
+        <button type="submit">변경</button>
     </form>
 </div>
 </body>
