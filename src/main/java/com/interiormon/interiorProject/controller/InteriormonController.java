@@ -1,7 +1,6 @@
 package com.interiormon.interiorProject.controller;
 
 import com.interiormon.interiorProject.dto.UserDTO;
-import com.interiormon.interiorProject.persistence.UserRepository;
 import com.interiormon.interiorProject.service.UserService;
 import com.interiormon.interiorProject.validator.CheckEmailValidator;
 import com.interiormon.interiorProject.validator.CheckNicknameValidator;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -226,6 +224,23 @@ public class InteriormonController {
         userDTO.setPassword(password);
         userService.signUp(userDTO);
 
+        return "home";
+    }
+
+    @GetMapping("member/change-pw")
+    public String changePassword(HttpSession session, Model model) {
+        String loggedUserId = (String) session.getAttribute("userId");
+        String loggedNickname = (String) session.getAttribute("nickname");
+
+        if (loggedUserId != null) {
+            UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
+
+            model.addAttribute("userDTO", userDTO);
+            model.addAttribute("userId", loggedUserId);
+            model.addAttribute("nickname", loggedNickname);
+
+            return "member/change-pw";
+        }
         return "home";
     }
 }
