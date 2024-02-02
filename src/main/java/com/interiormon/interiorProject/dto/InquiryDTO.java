@@ -1,39 +1,33 @@
-package com.interiormon.interiorProject.domain;
+package com.interiormon.interiorProject.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import com.interiormon.interiorProject.domain.User;
+
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-@Entity
-@Getter
-@Setter
+
+@Data
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
-public class Inquiry {
+public class InquiryDTO {
 
-    @Id
     private int inquiryNo;
     
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName="userId")
     private User user;
     
     private String title;
     private String content;
-    
-    @Column(name = "createdDate")
     private LocalDateTime createdDate;
-    
     private LocalDateTime modifiedDate;
     private String category;
 }
