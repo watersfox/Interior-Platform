@@ -18,12 +18,8 @@ public class User {
 
     @Id
     private String userId;
-//
-//    @OneToMany(mappedBy = "userId")
-//    private List<Comment> comment;
-//
-//    @OneToMany(mappedBy = "userId")
-//    private List<CommentLikes> commentLikes;
+    @OneToMany(mappedBy = "user")
+    private List<Inquiry> Inquirys;
 
     private String password;
     private String nickname;

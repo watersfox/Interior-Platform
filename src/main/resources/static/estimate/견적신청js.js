@@ -15,7 +15,7 @@
         };
 
         let currentCardIndex = 1;
-        let currentButtonIndex = 1;
+        //let currentButtonIndex = 1;
         let cardTotalPrices = {};
 
         function showCard(cardName) {
@@ -54,71 +54,65 @@
             document.getElementById('next-btn').style.width = (currentCardIndex === 1) ? '300px' : '150px';
         }
 
-        function nextCard() {
-            const progressBar = document.getElementById('progress-bar');
-            const checkboxGroup = document.getElementById('checkbox-group');
-            const prevBtn = document.getElementById('prev-btn');
+function nextCard() {
+    const progressBar = document.getElementById('progress-bar');
+    const checkboxGroup = document.getElementById('checkbox-group');
+    const prevBtn = document.getElementById('prev-btn');
 
-            // Check if at least one checkbox is checked
-            const checkboxes = checkboxGroup.querySelectorAll('input[type="checkbox"]');
-            const atLeastOneChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+    // Check if at least one checkbox is checked
+    const checkboxes = checkboxGroup.querySelectorAll('input[type="checkbox"]');
+    const atLeastOneChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-            if (!atLeastOneChecked) {
-                alert('Please check at least one checkbox.');
-                return;
-            }
+    if (!atLeastOneChecked) {
+        alert('Please check at least one checkbox.');
+        return;
+    }
 
-            // Calculate progress
-            const progress = (currentCardIndex * 3 + currentButtonIndex) / 30 * 100;
-            // const progress = currentCardIndex* 10;
-            progressBar.style.width = `${progress}%`;
+    // Calculate progress
+    const progress = currentCardIndex * 10; // 각 카드에 10%씩 할당
+    progressBar.style.width = `${progress}%`;
 
-            // Show next card
-            currentButtonIndex = 1;
-            // currentButtonIndex = 0;
-            currentCardIndex++;
+    // Show next card
+    currentCardIndex++;
 
-            // Enable prev button
-            prevBtn.disabled = false;
+    // Enable prev button
+    prevBtn.disabled = false;
 
-            if (currentCardIndex <= 10) {
-                const cardName = `Card ${currentCardIndex}`;
-                showCard(cardName);
-            } else {
-                alert('All cards completed!');
-                // Disable next button if all cards completed
-                document.getElementById('next-btn').disabled = true;
-            }
+    if (currentCardIndex <= 10) {
+        const cardName = `Card ${currentCardIndex}`;
+        showCard(cardName);
+    } else {
+        alert('All cards completed!');
+        // Disable next button if all cards completed
+        document.getElementById('next-btn').disabled = true;
+    }
 
-            // Disable next button after showing the next card
-            document.getElementById('next-btn').disabled = true;
-        }
+    // Disable next button after showing the next card
+    document.getElementById('next-btn').disabled = true;
+}
 
-        function prevCard() {
-            const progressBar = document.getElementById('progress-bar');
-            const checkboxGroup = document.getElementById('checkbox-group');
-            const nextBtn = document.getElementById('next-btn');
+function prevCard() {
+    const progressBar = document.getElementById('progress-bar');
+    const checkboxGroup = document.getElementById('checkbox-group');
+    const nextBtn = document.getElementById('next-btn');
 
-            // Calculate progress
-            currentCardIndex--;
-            const progress = (currentCardIndex * 3 + currentButtonIndex) / 30 * 100;
-            // const progress = currentCardIndex*10;
-            progressBar.style.width = `${progress}%`;
+    // Calculate progress
+    currentCardIndex--;
+    const progress = (currentCardIndex - 1) * 10;
+    progressBar.style.width = `${progress}%`;
 
-            // Show previous card
-            currentButtonIndex = 1;
-            // currentButtonIndex = 0;
-            const cardName = `Card ${currentCardIndex}`;
-            showCard(cardName);
+    // Show previous card
+    const cardName = `Card ${currentCardIndex}`;
+    showCard(cardName);
 
-            // Enable next button
-            nextBtn.disabled = false;
+    // Enable next button
+    nextBtn.disabled = false;
 
-            // Disable prev button if at the first card
-            if (currentCardIndex === 1) {
-                document.getElementById('prev-btn').disabled = true;
-            }
-        }
+    // Disable prev button if at the first card
+    if (currentCardIndex === 1) {
+        document.getElementById('prev-btn').disabled = true;
+    }
+}
 
         function updateNextButtonState() {
             // Enable next button if at least one checkbox is checked

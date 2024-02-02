@@ -48,6 +48,8 @@ public class InteriormonController {
             model.addAttribute("userId", loggedUserId);
             model.addAttribute("nickname", loggedNickname);
         }
+        
+        System.out.println('d');
         return "home";
     }
 
