@@ -92,4 +92,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public String getUserIdByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return null;
+        }
+
+        String userId = user.getUserId();
+
+        return userId;
+    }
+
 }

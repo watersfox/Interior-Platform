@@ -23,4 +23,5 @@ public interface UserService {
 
     void setSessionNickname(HttpSession session, Model model);
 
+    String getUserIdByEmail(String email);
 }

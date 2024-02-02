@@ -271,7 +271,6 @@ public class UserController {
 
         System.out.println("유효성검사결과 = " + passwordMatcher.matches());
 
-
         UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
         userDTO.setPassword(newPassword);
         userService.signUp(userDTO);
@@ -281,7 +280,33 @@ public class UserController {
 
         session.invalidate();
 
-
         return "member/signup-ok";
     }
+
+    @GetMapping("member/find-id")
+    public String findId() {
+
+        return "member/find-id";
+    }
+
+    @PostMapping("member/find-id-ok")
+    public String findIdOk(@RequestParam(name = "email") String email ,Model model) {
+
+        String userId = userService.getUserIdByEmail(email);
+
+        if (userId == null) {
+            model.addAttribute("userId", "아이디를 찾을 수 없습니다.");
+            return "/member/find-id";
+        }
+
+
+        model.addAttribute("userId", userId);
+
+        return "/member/find-id";
+    }
+
+//    @GetMapping("member/find-pw")
+//    public String findPw() {
+//        return "member/find-pw";
+//    }
 }
