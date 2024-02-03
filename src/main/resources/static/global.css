@@ -36,6 +36,22 @@ header {
   fill: currentColor;
 }
 
+/* 배지 스타일 추가 */
+#bell-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .notification-dropdown {
   display: none;
   position: absolute;
@@ -55,6 +71,13 @@ header {
   padding: 8px;
   text-decoration: none;
   color: black;
+}
+
+.notification-dropdown p {
+  height: 40px;
+  line-height: 30px; /* 텍스트의 수직 중앙 정렬을 위해 높이와 동일하게 설정 */
+  margin-bottom: 1px; /* 기본 마진 제거 */
+  padding: 0px; /* 상하 여백 추가 */
 }
 
 .notification-dropdown a:hover {
