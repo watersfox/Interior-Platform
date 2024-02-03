@@ -18,8 +18,6 @@ public class User {
 
     @Id
     private String userId;
-    @OneToMany(mappedBy = "user")
-    private List<Inquiry> Inquirys;
 
     private String password;
     private String nickname;
@@ -29,4 +27,24 @@ public class User {
     private String introduce;
 //    private String imageUrl;
 
+    @OneToMany(mappedBy = "user")
+    private List<Inquiry> inquiries;
+
+    @OneToMany(mappedBy = "user")
+    private List<CommunityPost> communityPosts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    private List<CommentLikes> commentLikesList;
+
+    @OneToMany(mappedBy = "user")
+    private List<PostLikes> postLikesList;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user")
+    private List<Scrap> scraps;
 }

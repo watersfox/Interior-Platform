@@ -1,20 +1,27 @@
-//package com.interiormon.interiorProject.domain;
-//
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Id;
-//import lombok.Getter;
-//import lombok.Setter;
-//
-//@Entity
-//@Getter
-//@Setter
-//public class PostLikes {
-//
-//    @Id
-//    private int postLikesNo;
-//
-//    private String userId;
-//    private int postNumber;
-//
-//}
-//
+package com.interiormon.interiorProject.domain;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class PostLikes {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int postLikesNo;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName="userId")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "postNumber", referencedColumnName="postNumber")
+    private CommunityPost communityPost;
+
+}
+

@@ -2,11 +2,7 @@ package com.interiormon.interiorProject.domain;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +17,7 @@ import lombok.Setter;
 public class Inquiry {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inquiryNo;
     
     @ManyToOne
@@ -29,10 +26,7 @@ public class Inquiry {
     
     private String title;
     private String content;
-    
-    @Column(name = "createdDate")
     private LocalDateTime createdDate;
-    
     private LocalDateTime modifiedDate;
     private String category;
 }
