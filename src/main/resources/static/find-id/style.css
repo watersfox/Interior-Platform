@@ -60,6 +60,17 @@ a:hover {
     color: #4caf50;
 }
 
+.passwordError {
+    color: red;
+    text-align: left;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: left;*/
+}
+
 /* 자동완성 시 생기는 파란색 배경 없애기 */
 input:-webkit-autofill { -webkit-box-shadow: 0 0 0 00px #fff inset ; -webkit-text-fill-color: #000; }
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }

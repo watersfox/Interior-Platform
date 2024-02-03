@@ -271,7 +271,7 @@ public class UserController {
             return "member/change-pw";
         }
 
-        System.out.println("유효성검사결과 = " + passwordMatcher.matches());
+//        System.out.println("유효성검사결과 = " + passwordMatcher.matches());
 
         UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
         userDTO.setPassword(newPassword);
@@ -298,17 +298,66 @@ public class UserController {
 
         if (userId == null) {
             model.addAttribute("userId", "아이디를 찾을 수 없습니다.");
-            return "/member/find-id";
+            return "member/find-id";
         }
 
 
         model.addAttribute("userId", userId);
 
-        return "/member/find-id";
+        return "member/find-id";
     }
 
-//    @GetMapping("member/find-pw")
-//    public String findPw() {
-//        return "member/find-pw";
-//    }
+    @GetMapping("member/find-pw")
+    public String findPw() {
+        return "member/find-pw";
+    }
+
+    @PostMapping("member/find-pw-ok")
+    public String findPwOk(@RequestParam(name = "userId") String userId,
+                           @RequestParam(name = "phone") String phone,
+                           HttpSession session,
+                           Model model) {
+        UserDTO userDTO = userService.getUserDTOByUserId(userId);
+
+        if (userDTO == null || !userDTO.getPhone().equals(phone)) {
+            model.addAttribute("findError", "아이디와 전화번호를 다시 확인해주세요.");
+            return "member/find-pw";
+        }
+
+        session.setAttribute("userDTO", userDTO);
+        model.addAttribute("pass", true);
+
+        return "member/find-pw";
+    }
+
+    @PostMapping("member/find-pw-change")
+    public String findPwChange(@RequestParam(name = "newPassword") String newPassword,
+                               @RequestParam(name = "confirmPassword") String confirmPassword,
+                               HttpSession session,
+                               Model model) {
+
+        UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
+        Pattern passwordPattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher passwordMatcher = passwordPattern.matcher(newPassword);
+
+        if (!passwordMatcher.matches()) {
+            model.addAttribute("passwordError", "유효하지않은 비밀번호입니다.");
+            model.addAttribute("pass", true);
+            return "member/find-pw";
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            model.addAttribute("confirmPasswordError", "비밀번호가 일치하지 않습니다.");
+            model.addAttribute("pass", true);
+            return "member/find-pw";
+        }
+
+        userDTO.setPassword(newPassword);
+        userService.signUp(userDTO);
+
+        session.removeAttribute("userDTO");
+        session.invalidate();
+
+        return "member/signup-ok";
+    }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/find-id/style.css">
+    <title>비밀번호 찾기</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="!${pass}">
+        <h2>비밀번호 찾기</h2>
+        <form action="/member/find-pw-ok" method="post">
+            <label for="userId">비밀번호를 찾을 아이디</label>
+            <input type="text" id="userId" name="userId" required>
+            <label for="phone">가입 시 등록한 휴대폰 번호</label>
+            <input type="text" id="phone" name="phone" required>
+            <div>
+                <button type ="submit">비밀번호 찾기</button>
+                <a href="/">홈으로</a>
+            </div>
+        </form>
+    </div>
+    <div th:if="${pass}">
+        <h2>비밀번호 재설정</h2>
+        <form action="/member/find-pw-change" method="post">
+            <label for="newPassword">변경할 비밀번호</label>
+            <input type="password" id="newPassword" name="newPassword">
+            <div class="passwordError" th:if="${passwordError}" th:text="${passwordError}"></div>
+            <label for="confirmPassword">비밀번호 확인</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <div class="passwordError" th:if="${confirmPasswordError}" th:text="${confirmPasswordError}"></div>
+            <div>
+                <button type ="submit">비밀번호 변경</button>
+                <a href="/">홈으로</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
