@@ -107,10 +107,10 @@
     </ul>
 </div>
 <div class="div">
-    <form id="editForm" action="/member/edit-info-ok" method="post" th:object="${userDTO}">
+    <form id="editForm" action="" method="post" th:object="${userDTO}">
     <div class="div2">
         <div class="div3"></div>
-        <input type="submit" form="editForm" value="회원정보 수정" class="div4 btn-submit">
+        <button class="div4" type="button" onclick="submitForm('/member/edit-info-ok')">회원정보 수정</button>
     </div>
         <div class="div7"></div>
         <div class="div8">파일 업로드</div>
@@ -172,15 +172,44 @@
                 의사당대로 1 ㅣ 사업자등록번호 : 002-78-40913
             </div>
         </div>
+        <div class="div5"></div>
+        <button class="div6" type="button" onclick="submitForm('/member/delete')">회원 탈퇴</button>
         </form>
     <div class="vderror" th:if="${validateError}" th:text="${validateError}"></div>
-    <div class="div2">
-        <div class="div5"></div>
-        <div class="div6">회원 탈퇴</div>
-    </div>
     </div>
     <div class="div27">회원정보 수정</div>
     <div class="rectangle-4"></div>
-</div>
+<script th:inline="javascript">
+    function submitForm(action) {
+
+        if (action == "/member/delete") {
+
+            const confirmed = confirm("정말로 회원을 탈퇴하시겠습니까?");
+
+            if (confirmed) {
+                // 버튼 클릭 시 동적으로 폼의 action 변경
+                document.getElementById('editForm').action = action;
+
+                // 폼을 서버로 제출
+                document.getElementById('editForm').submit();
+
+                // 성공 메시지 표시
+                alert("회원 탈퇴가 완료되었습니다.");
+            } else {
+                // 사용자가 취소한 경우
+                alert("회원 탈퇴를 취소하였습니다.");
+            }
+        }
+
+        if (action == "/member/edit-info-ok") {
+            document.getElementById('editForm').action = action;
+
+            document.getElementById('editForm').submit();
+
+            alert("정보 수정이 완료되었습니다.");
+        }
+    }
+
+</script>
 </body>
 </html>

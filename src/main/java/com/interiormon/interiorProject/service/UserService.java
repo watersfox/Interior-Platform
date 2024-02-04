@@ -1,5 +1,6 @@
 package com.interiormon.interiorProject.service;
 
+import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
@@ -24,4 +25,8 @@ public interface UserService {
     void setSessionNickname(HttpSession session, Model model);
 
     String getUserIdByEmail(String email);
+
+    void deleteUserByUserId(String userId);
+
+    User findByUserId(String userId);
 }
