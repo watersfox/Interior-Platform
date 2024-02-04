@@ -46,4 +46,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Scrap> scraps;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private ProfileImage profileImage;
 }

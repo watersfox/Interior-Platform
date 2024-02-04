@@ -81,7 +81,7 @@
   font-weight: 400;
   position: absolute;
   left: 1010px;
-  top: 1065px;
+  top: 1015px;
   width: 180px;
   height: 55px;
   display: flex;
@@ -135,6 +135,7 @@
   position: absolute;
   left: 730px;
   top: 870px;
+  overflow: hidden;
 }
 .div12 {
   color: #000000;
