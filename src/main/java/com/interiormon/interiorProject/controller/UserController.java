@@ -1,5 +1,6 @@
 package com.interiormon.interiorProject.controller;
 
+import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
 import com.interiormon.interiorProject.service.UserService;
 import com.interiormon.interiorProject.validator.CheckEmailValidator;
@@ -159,9 +160,7 @@ public class UserController {
 
         if (loggedUserId != null) {
             UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
-            if (userDTO == null) { // 정상적이지 않은 로그인 대비
-                return "home";
-            }
+
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("userId", loggedUserId);
             model.addAttribute("nickname", loggedNickname);
@@ -358,6 +357,38 @@ public class UserController {
         session.removeAttribute("userDTO");
         session.invalidate();
 
+        return "member/signup-ok";
+    }
+
+    @PostMapping("member/delete")
+    public String deleteMember(@RequestParam(name = "password") String password, HttpSession session, Model model) {
+
+        String userId = (String) session.getAttribute("userId");
+
+        User user = userService.findByUserId(userId);
+        if (user == null) {
+            return "home";
+        }
+
+        if (password == null || password.trim().isEmpty() || !userService.checkUserIdAndPassword(userId, password)) {
+            UserDTO userDTO = userService.getUserDTOByUserId(userId);
+            model.addAttribute("userDTO", userDTO);
+            model.addAttribute("validateError", "유효하지 않은 비밀번호입니다.");
+            return "member/edit-info";
+        }
+
+        userService.deleteUserByUserId(userId);
+
+        session.invalidate();
+
+        model.addAttribute("successMessage", "회원 탈퇴가 정상적으로 이루어졌습니다.");
+
+
+        return "home";
+    }
+
+    @GetMapping("member/signup-ok")
+    public String showSignUpOk() {
         return "member/signup-ok";
     }
 }

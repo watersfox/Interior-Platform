@@ -61,6 +61,16 @@ public class UserServiceImpl implements UserService {
         return nickname;
     }
 
+    public User findByUserId(String userId) {
+        User user = userRepository.findByUserId(userId);
+
+        if (user == null) {
+            return null;
+        }
+
+        return user;
+    }
+
     public UserDTO getUserDTOByUserId(String userId) {
         User user = userRepository.findByUserId(userId);
 
@@ -103,4 +113,10 @@ public class UserServiceImpl implements UserService {
         return userId;
     }
 
+    @Transactional
+    public void deleteUserByUserId(String userId) {
+
+        userRepository.deleteUserByUserId(userId);
+
+    }
 }

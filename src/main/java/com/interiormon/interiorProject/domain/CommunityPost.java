@@ -30,6 +30,8 @@ public class CommunityPost {
     private LocalDateTime modifiedDate;
     private int likesCnt;
     private LocalDateTime deletedDate;
+    private String fileName;
+    private String filePath;
 
     @OneToMany(mappedBy = "communityPost")
     private List<Comment> comments;

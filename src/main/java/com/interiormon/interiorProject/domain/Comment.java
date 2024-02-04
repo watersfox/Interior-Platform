@@ -27,14 +27,14 @@ public class Comment {
     private CommunityPost communityPost;
 
     private String content;
-    private int level;
-    private int bundleId;
-    private int bundleOrder;
-    private boolean isDeleted;
+    private Integer level;
+    private Integer bundleId;
+    private Integer bundleOrder;
+    private Boolean  isDeleted;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private LocalDateTime deletedDate;
-    private int likesCnt;
+    private Integer likesCnt;
 
     @OneToMany(mappedBy = "comment")
     private List<CommentLikes> commentLikesList;
