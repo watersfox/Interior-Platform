@@ -20,6 +20,7 @@ header {
  height: 30px; /* 크기 조절 */
  border-radius: 50%;
  transition: background-color 0.5s ease;
+  z-index: 0;
 }
 
 #bellbox:hover {
@@ -36,13 +37,15 @@ header {
   fill: currentColor;
 }
 
-/* 배지 스타일 추가 */
+/* 배지 스타일 추가 및 수정 */
 #bell-badge {
   position: absolute;
+  margin: 8px 0px 0px -7px;
+  border: 0px solid white;
   top: 5px;
   right: 5px;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background-color: red;
   border-radius: 50%;
   color: white;
@@ -50,6 +53,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1; /* 배지를 벨 아이콘 앞에 표시하도록 z-index 추가 */
 }
 
 .notification-dropdown {
