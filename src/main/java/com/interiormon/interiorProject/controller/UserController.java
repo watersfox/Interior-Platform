@@ -391,7 +391,4 @@ public class UserController {
     public String showSignUpOk() {
         return "member/signup-ok";
     }
-
-//
-//
 }

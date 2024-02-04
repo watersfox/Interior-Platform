@@ -175,6 +175,7 @@
         <div class="div5"></div>
         <button class="div6" type="button" onclick="submitForm('/member/delete')">회원 탈퇴</button>
         </form>
+    </div>
     <div class="vderror" th:if="${validateError}" th:text="${validateError}"></div>
     </div>
     <div class="div27">회원정보 수정</div>
@@ -192,9 +193,6 @@
 
                 // 폼을 서버로 제출
                 document.getElementById('editForm').submit();
-
-                // 성공 메시지 표시
-                alert("회원 탈퇴가 완료되었습니다.");
             } else {
                 // 사용자가 취소한 경우
                 alert("회원 탈퇴를 취소하였습니다.");
@@ -205,11 +203,8 @@
             document.getElementById('editForm').action = action;
 
             document.getElementById('editForm').submit();
-
-            alert("정보 수정이 완료되었습니다.");
         }
     }
-
 </script>
 </body>
 </html>
