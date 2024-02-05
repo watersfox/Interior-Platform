@@ -1,7 +1,9 @@
 package com.interiormon.interiorProject.controller;
 
+import com.interiormon.interiorProject.domain.ProfileImage;
 import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
+import com.interiormon.interiorProject.service.ImageService;
 import com.interiormon.interiorProject.service.UserService;
 import com.interiormon.interiorProject.validator.CheckEmailValidator;
 import com.interiormon.interiorProject.validator.CheckNicknameValidator;
@@ -27,6 +29,7 @@ import java.util.regex.Pattern;
 public class UserController {
 
     private final UserService userService;
+    private final ImageService imageService;
     private final CheckUserIdValidator checkUserIdValidator;
     private final CheckEmailValidator checkEmailValidator;
     private final CheckNicknameValidator checkNicknameValidator;
@@ -157,6 +160,7 @@ public class UserController {
     public String editInfo(HttpSession session, Model model) {
         String loggedUserId = (String) session.getAttribute("userId");
         String loggedNickname = (String) session.getAttribute("nickname");
+        ProfileImage profileImage = imageService.getProfileImageByUserId(loggedUserId);
 
         if (loggedUserId != null) {
             UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
@@ -164,6 +168,7 @@ public class UserController {
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("userId", loggedUserId);
             model.addAttribute("nickname", loggedNickname);
+            model.addAttribute("profileImage", profileImage);
 
             return "member/edit-info";
         }
@@ -391,7 +396,4 @@ public class UserController {
     public String showSignUpOk() {
         return "member/signup-ok";
     }
-
-//
-//
 }

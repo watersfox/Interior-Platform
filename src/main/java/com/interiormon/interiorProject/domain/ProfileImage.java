@@ -1,23 +1,27 @@
 package com.interiormon.interiorProject.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
-public class Scrap {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProfileImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int scrapNumber;
+    private int imageNumber;
 
-    @ManyToOne
+    private String url;
+
+    @OneToOne
     @JoinColumn(name = "userId", referencedColumnName="userId")
     private User user;
 
-    private String linkUrl;
-    private String thumbnailUrl;
+    public void updateUrl(String url) {
+        this.url = url;
+    }
 }
-

@@ -15,19 +15,19 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/board/write")
-    public String boardWrite() {
-        return "board/board-view";
-    }
-
-    @PostMapping("/board/writePro")
-    public String boardWritePro(CommunityPost board, Model model, MultipartFile file) throws Exception { // 데이터가 board에 담겨서 들어옴
-
-        boardService.writeBoard(board, file);
-
-        model.addAttribute("message", "글 작성이 완료되었습니다.");
-        model.addAttribute("searchUrl", "/board/list");
-
-        return "message";
-    }
+//    @GetMapping("/board/write")
+//    public String boardWrite() {
+//        return "board/board-view";
+//    }
+//
+//    @PostMapping("/board/writePro")
+//    public String boardWritePro(CommunityPost board, Model model, MultipartFile file) throws Exception { // 데이터가 board에 담겨서 들어옴
+//
+//        boardService.writeBoard(board, file);
+//
+//        model.addAttribute("message", "글 작성이 완료되었습니다.");
+//        model.addAttribute("searchUrl", "/board/list");
+//
+//        return "message";
+//    }
 }

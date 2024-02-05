@@ -74,7 +74,7 @@
                             <a class="nav-link" href="/member/member-info" th:text="${nickname}+'님'">내정보</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">로그아웃</a>
+                            <a class="nav-link" href="/login/logout">로그아웃</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">고객센터</a>
@@ -107,19 +107,21 @@
     </ul>
 </div>
 <div class="div">
-    <form id="editForm" action="" method="post" th:object="${userDTO}">
+    <form id="editForm" action="" method="post" th:object="${userDTO}" enctype="multipart/form-data">
     <div class="div2">
         <div class="div3"></div>
         <button class="div4" type="button" onclick="submitForm('/member/edit-info-ok')">회원정보 수정</button>
     </div>
-        <div class="div7"></div>
-        <div class="div8">파일 업로드</div>
+        <input class="div8" type="file" name="file" accept="image/*">
+        <button class="div7" type="button" onclick="submitForm('/image-upload')">이미지 업로드</button>
     <div class="div2">
         <div class="div9"></div>
         <textarea id="introduce" name="introduce" class ="_30" cols="1" rows="1" style="resize: none" placeholder="30자 이내로 작성하세요." tabindex="5" th:text="*{introduce}" th:value="*{introduce}"></textarea>
     </div>
     <div class="div10">자기소개</div>
-    <div class="div11"></div>
+    <div class="div11"><img th:src="@{${profileImage.url}}" alt="Profile Image"/>
+    </div>
+
     <div class="div12">프로필 이미지</div>
     <div class="div2">
         <div class="div13"></div>
@@ -175,6 +177,7 @@
         <div class="div5"></div>
         <button class="div6" type="button" onclick="submitForm('/member/delete')">회원 탈퇴</button>
         </form>
+    </div>
     <div class="vderror" th:if="${validateError}" th:text="${validateError}"></div>
     </div>
     <div class="div27">회원정보 수정</div>
@@ -192,9 +195,6 @@
 
                 // 폼을 서버로 제출
                 document.getElementById('editForm').submit();
-
-                // 성공 메시지 표시
-                alert("회원 탈퇴가 완료되었습니다.");
             } else {
                 // 사용자가 취소한 경우
                 alert("회원 탈퇴를 취소하였습니다.");
@@ -205,11 +205,14 @@
             document.getElementById('editForm').action = action;
 
             document.getElementById('editForm').submit();
+        }
 
-            alert("정보 수정이 완료되었습니다.");
+        if (action == "/image-upload") {
+            document.getElementById('editForm').action = action;
+
+            document.getElementById('editForm').submit();
         }
     }
-
 </script>
 </body>
 </html>

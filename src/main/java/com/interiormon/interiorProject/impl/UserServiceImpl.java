@@ -1,8 +1,11 @@
 package com.interiormon.interiorProject.impl;
 
+import com.interiormon.interiorProject.domain.ProfileImage;
 import com.interiormon.interiorProject.domain.User;
 import com.interiormon.interiorProject.dto.UserDTO;
+import com.interiormon.interiorProject.persistence.ImageRepository;
 import com.interiormon.interiorProject.persistence.UserRepository;
+import com.interiormon.interiorProject.service.ImageService;
 import com.interiormon.interiorProject.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,12 +21,15 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final ImageRepository imageRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, ImageRepository imageRepository) {
         this.userRepository = userRepository;
+        this.imageRepository = imageRepository;
     }
 
     @Override
+    @Transactional
     public void signUp(UserDTO userDTO) {
 
         User user = User.builder()
@@ -36,6 +42,14 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         userRepository.save(user);
+
+        ProfileImage profileImage;
+        profileImage = ProfileImage.builder()
+                .user(user)
+                .url("/profileImages/defaultProfileImage.png")
+                .build();
+
+        imageRepository.save(profileImage);
     }
 
     @Transactional(readOnly = true)

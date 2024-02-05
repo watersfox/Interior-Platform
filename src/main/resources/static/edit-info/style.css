@@ -81,7 +81,7 @@
   font-weight: 400;
   position: absolute;
   left: 1010px;
-  top: 1065px;
+  top: 1015px;
   width: 180px;
   height: 55px;
   display: flex;
@@ -128,13 +128,14 @@
   height: 32px;
 }
 .div11 {
-  background: #f1e5d4;
-  border-radius: 10px;
-  width: 250px;
-  height: 250px;
+  background: white;
+  border-radius: 50%;
+  width: 256px;
+  height: 256px;
   position: absolute;
   left: 730px;
   top: 870px;
+  overflow: hidden;
 }
 .div12 {
   color: #000000;
