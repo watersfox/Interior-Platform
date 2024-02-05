@@ -15,6 +15,7 @@ import java.util.List;
 public class User {
 
     @Id
+    @Column(length = 20)
     private String userId;
 
     private String password;
@@ -45,5 +46,10 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Scrap> scraps;
-
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Estimate> estimates;  
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Notification> notifications;  
 }
