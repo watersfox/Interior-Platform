@@ -24,5 +24,4 @@ public class ProfileImage {
     public void updateUrl(String url) {
         this.url = url;
     }
-
 }

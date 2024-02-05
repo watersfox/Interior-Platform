@@ -48,4 +48,8 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private ProfileImage profileImage;
+
+    public User(String userId) {
+        this.userId = userId;
+    }
 }

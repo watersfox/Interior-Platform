@@ -10,6 +10,7 @@ import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -37,7 +38,7 @@ public class ImageServiceImpl implements ImageService {
 
             // 썸네일 생성 및 저장
             Thumbnails.of(file.getInputStream())
-                    .size(250, 250)
+                    .size(256, 256)
                     .toFile(thumbnailFile);
 
             ProfileImage image = imageRepository.findByUser(user);
@@ -61,5 +62,4 @@ public class ImageServiceImpl implements ImageService {
     public ProfileImage getProfileImageByUserId(String userId) {
         return imageRepository.findByUser_UserId(userId);
     }
-
 }

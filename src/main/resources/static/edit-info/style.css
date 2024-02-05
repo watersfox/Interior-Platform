@@ -128,10 +128,10 @@
   height: 32px;
 }
 .div11 {
-  background: #f1e5d4;
-  border-radius: 10px;
-  width: 250px;
-  height: 250px;
+  background: white;
+  border-radius: 50%;
+  width: 256px;
+  height: 256px;
   position: absolute;
   left: 730px;
   top: 870px;
