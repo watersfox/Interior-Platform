@@ -58,13 +58,21 @@ function nextCard() {
     const progressBar = document.getElementById('progress-bar');
     const checkboxGroup = document.getElementById('checkbox-group');
     const prevBtn = document.getElementById('prev-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Disable all checkboxes
+    const checkboxes = checkboxGroup.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.disabled = true;
+    });
 
     // Check if at least one checkbox is checked
-    const checkboxes = checkboxGroup.querySelectorAll('input[type="checkbox"]');
     const atLeastOneChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
     if (!atLeastOneChecked) {
         alert('Please check at least one checkbox.');
+        showCard(`Card ${currentCardIndex}`);
         return;
     }
 
@@ -81,20 +89,32 @@ function nextCard() {
     if (currentCardIndex <= 10) {
         const cardName = `Card ${currentCardIndex}`;
         showCard(cardName);
+
+        // Disable next button if at the last card
+        if (currentCardIndex === 10) {
+            nextBtn.disabled = true;
+        }
     } else {
         alert('All cards completed!');
         // Disable next button if all cards completed
-        document.getElementById('next-btn').disabled = true;
-    }
+        nextBtn.disabled = true;
 
-    // Disable next button after showing the next card
-    document.getElementById('next-btn').disabled = true;
+        // Show Submit button
+        if (currentCardIndex === 11) {
+            submitBtn.style.display = 'block';
+        }
+    }
 }
+
+
+
+
 
 function prevCard() {
     const progressBar = document.getElementById('progress-bar');
     const checkboxGroup = document.getElementById('checkbox-group');
     const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
 
     // Calculate progress
     currentCardIndex--;
@@ -108,11 +128,15 @@ function prevCard() {
     // Enable next button
     nextBtn.disabled = false;
 
+    // Hide Submit button
+    submitBtn.style.display = 'none';
+
     // Disable prev button if at the first card
     if (currentCardIndex === 1) {
         document.getElementById('prev-btn').disabled = true;
     }
 }
+
 
         function updateNextButtonState() {
             // Enable next button if at least one checkbox is checked

@@ -41,9 +41,12 @@ body {
 
 .card-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 50vh;
+    margin-bottom: 0px; /* card-container 아래에 간격을 둡니다. */
+    
 }
 
 .card {
@@ -82,4 +85,9 @@ body {
 
 #next-btn {
     width: 150px; /* Set width for Next button */
+}
+
+#submit-btn {
+	width: 150px;
+    margin-top: 20px; /* submit 버튼과 위에 간격을 둡니다. */
 }
