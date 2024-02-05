@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.awt.*;
 
-public interface ImageRepository extends JpaRepository<ProfileImage, Long> {
+public interface ImageRepository extends JpaRepository<ProfileImage, Integer> {
 
     ProfileImage findByUser(User user);
 

@@ -192,11 +192,13 @@ public class UserController {
         Pattern nicknamePattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher phoneMatcher = phonePattern.matcher(userDTO.getPhone());
         Matcher nicknameMatcher = nicknamePattern.matcher(userDTO.getNickname());
+        ProfileImage profileImage = imageService.getProfileImageByUserId(loggedUserId);
 
         if (password == null || password.trim().isEmpty() || !userService.checkUserIdAndPassword(userDTO.getUserId(), password)) {
             userDTO = userService.getUserDTOByUserId(loggedUserId);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("validateError", "유효하지 않은 비밀번호입니다.");
+            model.addAttribute("profileImage", profileImage);
             return "member/edit-info";
         }
 
@@ -205,6 +207,7 @@ public class UserController {
                 userDTO = userService.getUserDTOByUserId(loggedUserId);
                 model.addAttribute("userDTO", userDTO);
                 model.addAttribute("validateError", "중복된 닉네임입니다.");
+                model.addAttribute("profileImage", profileImage);
                 return "member/edit-info";
             }
         }
@@ -213,6 +216,7 @@ public class UserController {
             userDTO = userService.getUserDTOByUserId(loggedUserId);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("validateError", "자기소개글은 30자 이내로 작성해주세요.");
+            model.addAttribute("profileImage", profileImage);
             return "member/edit-info";
         }
 
@@ -220,6 +224,7 @@ public class UserController {
             userDTO = userService.getUserDTOByUserId(loggedUserId);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("validateError", "올바르지 않은 전화번호입니다.");
+            model.addAttribute("profileImage", profileImage);
             return "member/edit-info";
         }
 
@@ -227,12 +232,13 @@ public class UserController {
             userDTO = userService.getUserDTOByUserId(loggedUserId);
             model.addAttribute("userDTO", userDTO);
             model.addAttribute("validateError", "닉네임은 1~8자의 영문, 한글, 숫자만 사용해야 합니다.");
+            model.addAttribute("profileImage", profileImage);
             return "member/edit-info";
         }
 
 
         userDTO.setPassword(password);
-        userService.signUp(userDTO);
+        userService.onlySignUp(userDTO);
 
         return "home";
     }
