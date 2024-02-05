@@ -1,0 +1,217 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: #f5eedd;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.div2 {
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 731px;
+  top: 375px;
+  width: 375px;
+  height: 32px;
+}
+.div-2-span {
+  color: #000000;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+.div-2-span2 {
+  color: #ff0000;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+/*.div3 {*/
+/*  position: absolute;*/
+/*  inset: 0;*/
+/*}*/
+.div4 {
+  background: #f1e5d4;
+  border-radius: 10px;
+  width: 458px;
+  height: 55px;
+  position: absolute;
+  left: 731px;
+  top: 541px;
+}
+.div5 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 731px;
+  top: 541px;
+  width: 458px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div6 {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 5px;
+  width: 458px;
+  height: 55px;
+  position: absolute;
+  left: 731px;
+  top: 474px;
+}
+.div7 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 750px;
+  top: 474px;
+  width: 396px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  outline: none;
+}
+.div8 {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 5px;
+  width: 458px;
+  height: 55px;
+  position: absolute;
+  left: 731px;
+  top: 407px;
+}
+.div9 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 750px;
+  top: 407px;
+  width: 396px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  outline: none;
+}
+.div10 {
+  color: #b5b5b5;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 731px;
+  top: 596px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div11 {
+  color: #b5b5b5;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 889px;
+  top: 596px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div12 {
+  color: #b5b5b5;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 1049px;
+  top: 596px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div13 {
+  color: #9dd84b;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  position: absolute;
+  left: 773px;
+  top: 83px;
+  width: 375px;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div14 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  position: absolute;
+  left: 773px;
+  top: 150px;
+  width: 375px;
+  height: 79px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover{
+  cursor: pointer;
+}
+
+.div15 {
+  color: red;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 1196px;
+  top: 407px;
+  width: 220px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+/* 자동완성 시 생기는 파란색 배경 없애기 */
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0 00px #fff inset ; -webkit-text-fill-color: #000; }
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }

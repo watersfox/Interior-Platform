@@ -1,0 +1,59 @@
+/* 사이드바 스타일 */
+
+.sidebar-nav {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 999;
+}
+
+.sidebar-nav li {
+    border-bottom: 1px solid #999;
+    text-indent: 1.5em;
+    line-height: 2.8em;
+}
+
+.sidebar-nav li:last-child {
+    border-bottom: none;
+    border-right: none;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+}
+
+.sidebar-nav li a:hover {
+    color: #000;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav > .sidebar-brand {
+    font-size: 1.3em;
+    line-height: 3em;
+}
+
+#page-wrapper {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    position: fixed;
+    width: 250px;
+    height: 60vh;
+    margin-left: -250px;
+    background: #FFF;
+    overflow-x: hidden;
+    overflow-y: auto;
+    left: 250px;
+    top : 76px;
+    z-index: 998;
+    border-right: 1px solid #999;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 20px;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/home/vars.css" />
+    <link rel="stylesheet" href="/home/style.css" />
+    <link rel="stylesheet" href="/global.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+    <style>
+
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        appearance: none;
+        background: none;
+
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <title>인테리어몬</title>
+  </head>
+  <body>
+  
+<!-- 네비게이션 시작 -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img class="image-2" src="/image-20.png" alt="logo"/></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">시공사례</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/estimate/application">견적의뢰</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">고객리뷰</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">커뮤니티</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <th:block th:if="${userId == null}">
+                <li class="nav-item">
+                  <a class="nav-link" href="/login/login">로그인</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/member/signup">회원가입</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">고객센터</a>
+                </li>
+              </th:block>
+              <th:block th:if="${userId != null}">
+              	<li class="nav-item" id="bellbox">
+  <span id="bell-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 20 20">
+    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+  </svg>
+  <div id="notification-dropdown" class="notification-dropdown">
+    <!-- 드롭다운으로 표시될 메뉴들 -->
+  </div>
+</li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/member/member-info" th:text="${nickname}+'님'">내정보</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login/logout">로그아웃</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">고객센터</a>
+              </th:block>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+<!-- 네비게이션 끝 -->
+    <div class="_10">
+        <div class="rectangle-32"></div>
+      <svg
+        class="div2"
+        width="1050"
+        height="200"
+        viewBox="0 0 1050 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M150 100C150 141.421 116.421 175 75 175C33.5786 175 0 141.421 0 100C0 58.5787 33.5786 25 75 25C116.421 25 150 58.5787 150 100Z"
+          fill="#F1E5D4"
+        />
+        <circle cx="288" cy="100" r="75" fill="#F1E5D4" />
+        <circle cx="525" cy="100" r="100" fill="#F1E5D4" />
+        <circle cx="763" cy="100" r="75" fill="#F1E5D4" />
+        <circle cx="975" cy="100" r="75" fill="#F1E5D4" />
+      </svg>
+        <div class="_102">10평대</div>
+        <div class="_20">20평대</div>
+        <div class="_30">30평대</div>
+        <div class="rectangle-4"></div>
+      <div class="div3">평행대별 인테리어</div>
+        <div class="rectangle-33"></div>
+        <div class="rectangle-34"></div>
+        <div class="rectangle-332"></div>
+        <div class="rectangle-342"></div>
+        <div class="rectangle-35"></div>
+        <div class="rectangle-36"></div>
+        <svg
+          class="star"
+          width="200"
+          height="36"
+          viewBox="0 0 200 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 28.9326L32.36 36L29.08 22.68L40 13.7179L25.62 12.5621L20 0L14.38 12.5621L0 13.7179L10.92 22.68L7.64 36L20 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M60 28.9326L72.36 36L69.08 22.68L80 13.7179L65.62 12.5621L60 0L54.38 12.5621L40 13.7179L50.92 22.68L47.64 36L60 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M100 28.9326L112.36 36L109.08 22.68L120 13.7179L105.62 12.5621L100 0L94.38 12.5621L80 13.7179L90.92 22.68L87.64 36L100 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M140 28.9326L152.36 36L149.08 22.68L160 13.7179L145.62 12.5621L140 0L134.38 12.5621L120 13.7179L130.92 22.68L127.64 36L140 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M180 28.9326L192.36 36L189.08 22.68L200 13.7179L185.62 12.5621L180 0L174.38 12.5621L160 13.7179L170.92 22.68L167.64 36L180 28.9326Z"
+            fill="#D9D9D9"
+          />
+        </svg>
+        <div class="rectangle-333"></div>
+        <div class="rectangle-343"></div>
+        <div class="rectangle-352"></div>
+        <div class="rectangle-362"></div>
+        <svg
+          class="star7"
+          width="200"
+          height="36"
+          viewBox="0 0 200 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 28.9326L32.36 36L29.08 22.68L40 13.7179L25.62 12.5621L20 0L14.38 12.5621L0 13.7179L10.92 22.68L7.64 36L20 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M60 28.9326L72.36 36L69.08 22.68L80 13.7179L65.62 12.5621L60 0L54.38 12.5621L40 13.7179L50.92 22.68L47.64 36L60 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M100 28.9326L112.36 36L109.08 22.68L120 13.7179L105.62 12.5621L100 0L94.38 12.5621L80 13.7179L90.92 22.68L87.64 36L100 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M140 28.9326L152.36 36L149.08 22.68L160 13.7179L145.62 12.5621L140 0L134.38 12.5621L120 13.7179L130.92 22.68L127.64 36L140 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M180 28.9326L192.36 36L189.08 22.68L200 13.7179L185.62 12.5621L180 0L174.38 12.5621L160 13.7179L170.92 22.68L167.64 36L180 28.9326Z"
+            fill="#D9D9D9"
+          />
+        </svg>
+        <div class="rectangle-334"></div>
+        <div class="rectangle-344"></div>
+        <div class="rectangle-353"></div>
+        <div class="rectangle-363"></div>
+        <svg
+          class="star13"
+          width="200"
+          height="36"
+          viewBox="0 0 200 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 28.9326L32.36 36L29.08 22.68L40 13.7179L25.62 12.5621L20 0L14.38 12.5621L0 13.7179L10.92 22.68L7.64 36L20 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M60 28.9326L72.36 36L69.08 22.68L80 13.7179L65.62 12.5621L60 0L54.38 12.5621L40 13.7179L50.92 22.68L47.64 36L60 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M100 28.9326L112.36 36L109.08 22.68L120 13.7179L105.62 12.5621L100 0L94.38 12.5621L80 13.7179L90.92 22.68L87.64 36L100 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M140 28.9326L152.36 36L149.08 22.68L160 13.7179L145.62 12.5621L140 0L134.38 12.5621L120 13.7179L130.92 22.68L127.64 36L140 28.9326Z"
+            fill="#D9D9D9"
+          />
+          <path
+            d="M180 28.9326L192.36 36L189.08 22.68L200 13.7179L185.62 12.5621L180 0L174.38 12.5621L160 13.7179L170.92 22.68L167.64 36L180 28.9326Z"
+            fill="#D9D9D9"
+          />
+        </svg>
+        <div class="rectangle-335"></div>
+        <div class="rectangle-345"></div>
+        <div class="rectangle-336"></div>
+        <div class="rectangle-346"></div>
+      <div class="div4">갓 나온 고객후기</div>
+        <div class="rectangle-76"></div>
+        <div class="div9">
+          <svg
+            class="phone"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.04445 17.3111C11.2444 23.6 16.4 28.7333 22.6889 31.9556L27.5778 27.0667C28.1778 26.4667 29.0667 26.2667 29.8444 26.5333C32.3333 27.3556 35.0222 27.8 37.7778 27.8C39 27.8 40 28.8 40 30.0222V37.7778C40 39 39 40 37.7778 40C16.9111 40 0 23.0889 0 2.22222C0 1 1 0 2.22222 0H10C11.2222 0 12.2222 1 12.2222 2.22222C12.2222 5 12.6667 7.66667 13.4889 10.1556C13.7333 10.9333 13.5556 11.8 12.9333 12.4222L8.04445 17.3111Z"
+              fill="#787878"
+            />
+          </svg>
+          <div class="_0000-0000">0000-0000</div>
+          <div class="_09-00-18-00-02-0000-0000-sp-google-com">
+            월 - 금:09:00 - 18:00 (주말 제외) ㅣ 팩스 : 02-0000-0000 ㅣ 고객문의
+            : sp@google.com
+          </div>
+          <div class="_1-002-78-40913">
+            인테리어몬주식회사 대표이사 : 이민주 ㅣ 주소 : 서울특별시 영등포구
+            의사당대로 1 ㅣ 사업자등록번호 : 002-78-40913
+          </div>
+      </div>
+    </div>
+   <script src="/global.js"></script>
+  </body>
+  
+</html>

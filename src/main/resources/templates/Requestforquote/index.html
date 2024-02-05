@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      margin-left: 25%; /* 왼쪽 여백 25% */
+      margin-right: 20%; /* 오른쪽 여백 20% */  
+    }
+    
+      #left-container .button-container {
+    display: flex;
+    flex-direction: row;
+<!--     justify-content: center; /* 버튼을 가로로 정렬하면서 중앙 정렬 */     -->
+  }
+
+  #left-container .button {
+  margin-right: 10px;
+  padding: 10;
+  height: 35px; /* 버튼의 높이 조절 */
+  line-height: 1px; /* 버튼 내부 텍스트의 수직 정렬을 위한 값 조절 */
+  min-width: 95px; /* 최소 너비 설정 */    
+  width: auto; /* 너비 자동 조절 */    
+  font-size: 16px; /* 텍스트 크기 조절 */
+  }
+
+  #left-container {
+  flex: 2; /* 왼쪽 컨테이너를 더 키우기 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬로 변경 */
+  justify-content: center;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+  padding-left: 5%; /* 여백 적용 */
+}
+
+    .card {
+      width: 410px;
+      height: 200px;
+      margin: 10px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-left: -2%; /* 카드를 왼쪽으로 이동시킴 */
+
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .button {
+      margin: 5px 0;
+      padding: 10px;
+      background-color: transparent;
+      color: #3498db;
+      border: 1px solid #3498db;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #3498db;
+      color: #fff;
+      border-color: #3498db;
+    }
+
+    #right-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div id="left-container">
+    <!-- First Card -->
+    <div class="card">
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 1', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 1', 'Button 4')">Button 4</button>
+      </div>
+    </div>
+
+    <!-- Second Card -->
+    <div class="card">
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 2', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 4')">Button 4</button>
+      </div>
+    </div>
+
+    <!-- 3 Card -->
+    <div class="card">
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 2', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 4')">Button 4</button>
+      </div>
+    </div>    
+
+    <!-- 4 Card -->
+    <div class="card">
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 2', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 4')">Button 4</button>
+      </div>
+    </div>    
+    
+    <!-- 5 Card -->
+    <div class="card">
+      <div class="button-container">
+        <button class="button" onclick="showResult('Card 2', 'Button 1')">Button 1</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 2')">Button 2</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 3')">Button 3</button>
+        <button class="button" onclick="showResult('Card 2', 'Button 4')">Button 4</button>
+      </div>
+    </div>        
+
+    <!-- Add more cards as needed -->
+    <!-- ... -->
+
+  </div>
+
+  <div id="right-container">
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function showResult(cardName, buttonName) {
+      document.getElementById('result').innerText = `You clicked: ${cardName} - ${buttonName}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+header {
+    /* 네비게이션 바를 상단에 고정시키기 */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* 다른 요소들보다 위에 표시되도록 설정 */
+}
+
+.image-2 {
+    width: 70px;
+    height: 50px;
+    object-fit: cover;
+}
+
+    
+#bellbox {
+ position: relative;
+ margin-top: 5px;
+ width: 30px; /* 크기 조절 */
+ height: 30px; /* 크기 조절 */
+ border-radius: 50%;
+ transition: background-color 0.5s ease;
+  z-index: 0;
+}
+
+#bellbox:hover {
+  background-color: lightgray;
+}
+
+.bi-bell {
+  position: absolute;
+  top: 22%; /* 서북쪽에 위치하도록 조절 */
+  left: 55%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* 배지 스타일 추가 및 수정 */
+#bell-badge {
+  position: absolute;
+  margin: 8px 0px 0px -7px;
+  border: 0px solid white;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* 배지를 벨 아이콘 앞에 표시하도록 z-index 추가 */
+}
+
+.notification-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 150px;
+  z-index: 1;
+}
+
+.notification-dropdown a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+.notification-dropdown p {
+  height: 40px;
+  line-height: 30px; /* 텍스트의 수직 중앙 정렬을 위해 높이와 동일하게 설정 */
+  margin-bottom: 1px; /* 기본 마진 제거 */
+  padding: 0px; /* 상하 여백 추가 */
+}
+
+.notification-dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+/* 자동완성 시 생기는 파란색 배경 없애기 */
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0 00px #fff inset ; -webkit-text-fill-color: #000; }
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }
