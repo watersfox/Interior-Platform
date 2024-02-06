@@ -1,3 +1,6 @@
+CREATE DATABASE interiordb DEFAULT CHARACTER SET utf-8;
+USE interiordb;
+
 /*
  Navicat Premium Data Transfer
 
