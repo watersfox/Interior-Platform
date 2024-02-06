@@ -52,6 +52,19 @@ public class UserServiceImpl implements UserService {
         imageRepository.save(profileImage);
     }
 
+    public void onlySignUp(UserDTO userDTO) {
+        User user = User.builder()
+                .userId(userDTO.getUserId())
+                .email(userDTO.getEmail())
+                .password(userDTO.getPassword())
+                .nickname(userDTO.getNickname())
+                .phone(userDTO.getPhone())
+                .introduce(userDTO.getIntroduce())
+                .build();
+
+        userRepository.save(user);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public Map<String, String> validateHandling(Errors errors) {
