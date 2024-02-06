@@ -28,6 +28,7 @@ public class Review {
     private String content;
     private double rating;
     private LocalDateTime createdDate;
+
     private LocalDateTime modifiedDate;
     private LocalDateTime deletedDate;
 }
