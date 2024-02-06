@@ -53,5 +53,11 @@ public class EstimateServiceImpl implements EstimateService {
     	
     	return estimateDTO;
     }
+    
+    @Override
+    public void saveEstimate(Estimate estimate) {
+        estimateRepository.save(estimate);
+        // 필요에 따라 추가적인 로직 수행
+    }    
 
 }

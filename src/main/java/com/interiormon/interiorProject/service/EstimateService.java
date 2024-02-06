@@ -1,5 +1,6 @@
 package com.interiormon.interiorProject.service;
 
+import com.interiormon.interiorProject.domain.Estimate;
 import com.interiormon.interiorProject.dto.EstimateDTO; 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
@@ -14,5 +15,5 @@ public interface EstimateService {
 //    void signUp(EstimateDTO estimateDTO);
     
     EstimateDTO getEstimateByEstimateNo(int estimateNo);
-
+    void saveEstimate(Estimate estimate);
 }

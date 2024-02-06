@@ -3,6 +3,7 @@ package com.interiormon.interiorProject.dto;
 import java.sql.Date;
 import java.time.LocalDateTime;
 
+import com.interiormon.interiorProject.domain.Estimate;
 import com.interiormon.interiorProject.domain.User;
 
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,17 @@ public class EstimateDTO {
     private String budget;
     private String constructionType;
     private String address;
+    
+    public Estimate toEntity() {
+        return Estimate.builder()
+            .user(this.user)
+            .buildingType(this.buildingType)
+            .buildDate(this.buildDate)
+            .budget(this.budget)
+            .constructionType(this.constructionType)
+            .address(this.address)
+            .build();
+    }    
 }
 
 

@@ -6,13 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface EstimateRepository extends JpaRepository<Estimate, Integer> {
 
 	 
-//    boolean existsByUserId(String userId);
-//
-//    boolean existsByEmail(String email);
-//
-//    boolean existsByNickname(String nickname);
-//
-//    User findByUserIdAndPassword(String userId, String password);
-//
+	Estimate save(Estimate estimate);
+
 	Estimate findByEstimateNo(int estimateNo);
 }

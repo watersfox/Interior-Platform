@@ -29,4 +29,6 @@ public interface UserService {
     void deleteUserByUserId(String userId);
 
     User findByUserId(String userId);
+    
+//    User getUserFromSession();
 }
