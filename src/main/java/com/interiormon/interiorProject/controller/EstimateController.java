@@ -65,7 +65,20 @@ public class EstimateController {
 		 public String es2() {
 
 		        return "home";
-		    }	    
+		    }	  
+	    
+	    @PostMapping("/saveEstimate")
+	    public ResponseEntity<String> saveEstimate(@RequestBody EstimateDTO estimateDTO) {
+	        // DTO 객체 처리 로직 작성
+	        System.out.println("Building Type: " + estimateDTO.getBuildingType());
+	        System.out.println("Build Date: " + estimateDTO.getBuildDate());
+	        System.out.println("Budget: " + estimateDTO.getBudget());
+	        System.out.println("Available Date: " + estimateDTO.getAvailableDate());
+	        System.out.println("Address: " + estimateDTO.getAddress());
+
+	        // 예: estimateDTO를 사용하여 견적 정보 저장
+	        return ResponseEntity.ok("Estimate saved successfully");
+	    }
 
 //	    @PostMapping("/saveEstimate")
 //	    public ResponseEntity<String> saveEstimate(@Valid @RequestBody EstimateDTO estimateDTO, Errors errors) {

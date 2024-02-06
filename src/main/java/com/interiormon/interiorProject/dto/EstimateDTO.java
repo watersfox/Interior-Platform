@@ -29,7 +29,8 @@ public class EstimateDTO {
     private String buildingType;
     private Date buildDate;
     private String budget;
-    private String constructionType;
+    //private String constructionType;
+    private String availableDate;
     private String address;
     
     public Estimate toEntity() {
@@ -38,7 +39,7 @@ public class EstimateDTO {
             .buildingType(this.buildingType)
             .buildDate(this.buildDate)
             .budget(this.budget)
-            .constructionType(this.constructionType)
+            //.constructionType(this.constructionType)
             .address(this.address)
             .build();
     }    

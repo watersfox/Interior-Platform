@@ -27,6 +27,6 @@ public class Estimate {
     private String buildingType;
     private Date buildDate;
     private String budget;
-    private String constructionType;
+    private String availableDate;
     private String address;
 }
