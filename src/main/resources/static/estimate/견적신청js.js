@@ -7,7 +7,7 @@
         let budget = null;
         let availableDate = null;
         let constructionType;
-        let address;
+        let address = null;
         
 function updateInputValue() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -20,6 +20,12 @@ function updateInputValue() {
         } else if (currentCardIndex === 3) {
             budget = checkedCheckbox.nextElementSibling.textContent;
         }
+    }
+    
+        // Update address
+    if (currentCardIndex === 5) {
+        const addressInput = document.getElementById('address-input');
+        address = addressInput.value;
     }
 }  
 
@@ -157,6 +163,7 @@ if (currentCardIndex === 5 && (availableAddress === null || availableAddress.tri
 
         // Hide next and prev buttons if it's the last card
         if (currentCardIndex === 6) {
+			submit();
             nextBtn.style.display = 'none';
             prevBtn.style.display = 'none';
             // Show completion message
@@ -302,7 +309,8 @@ function showAddressInput() {
 
         // Initial setup
         showCard('Card 1');
-        
+
+function submit(){        
 const estimateDTO = {
     buildingType: buildingType,
     buildDate: buildDate,
@@ -326,4 +334,4 @@ fetch('/saveEstimate', {
 .catch(error => {
     console.error('Error saving estimate:', error);
 });        
-        
+}        

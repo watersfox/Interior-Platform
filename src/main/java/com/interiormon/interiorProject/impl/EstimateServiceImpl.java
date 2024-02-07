@@ -48,7 +48,7 @@ public class EstimateServiceImpl implements EstimateService {
         .buildDate(estimate.getBuildDate())
         .budget(estimate.getBudget())
         .address(estimate.getAddress())
-        .constructionType(estimate.getConstructionType())
+//        .constructionType(estimate.getConstructionType())
         .build();
     	
     	return estimateDTO;

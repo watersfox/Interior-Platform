@@ -25,6 +25,32 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EstimateController {
 	
+	   private String buildingType;
+	    private String buildDate;
+	    private String budget;
+	    private String availableDate;
+	    private String address;
+	    
+	    @PostMapping("/save")
+	    public String saveEstimate1(@RequestBody EstimateDTO estimateDTO) {
+	        buildingType = estimateDTO.getBuildingType();
+	        buildDate = estimateDTO.getBuildDate();
+	        budget = estimateDTO.getBudget();
+	        availableDate = estimateDTO.getAvailableDate();
+	        address = estimateDTO.getAddress();
+	        return "view";
+	    }
+
+	    @GetMapping("/view")
+	    public String viewEstimate(Model model) {
+	        model.addAttribute("buildingType", buildingType);
+	        model.addAttribute("buildDate", buildDate);
+	        model.addAttribute("budget", budget);
+	        model.addAttribute("availableDate", availableDate);
+	        model.addAttribute("address", address);
+	        return "/estimate/view_estimate";
+	    }
+	
 	private final UserService userService;
 	private final EstimateService estimateService;
 	
@@ -68,7 +94,7 @@ public class EstimateController {
 		    }	  
 	    
 	    @PostMapping("/saveEstimate")
-	    public ResponseEntity<String> saveEstimate(@RequestBody EstimateDTO estimateDTO) {
+	    public String saveEstimate(@RequestBody EstimateDTO estimateDTO, Model model) {
 	        // DTO 객체 처리 로직 작성
 	        System.out.println("Building Type: " + estimateDTO.getBuildingType());
 	        System.out.println("Build Date: " + estimateDTO.getBuildDate());
@@ -77,7 +103,21 @@ public class EstimateController {
 	        System.out.println("Address: " + estimateDTO.getAddress());
 
 	        // 예: estimateDTO를 사용하여 견적 정보 저장
-	        return ResponseEntity.ok("Estimate saved successfully");
+//	        return ResponseEntity.ok("Estimate saved successfully");
+	        
+	        buildingType = estimateDTO.getBuildingType();
+	        buildDate = estimateDTO.getBuildDate();
+	        budget = estimateDTO.getBudget();
+	        availableDate = estimateDTO.getAvailableDate();
+	        address = estimateDTO.getAddress();
+	        
+	        model.addAttribute("buildingType", buildingType);
+	        model.addAttribute("buildDate", buildDate);
+	        model.addAttribute("budget", budget);
+	        model.addAttribute("availableDate", availableDate);
+	        model.addAttribute("address", address);
+	        return "estimate/view_estimate";
+	        
 	    }
 
 //	    @PostMapping("/saveEstimate")
