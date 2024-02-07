@@ -81,11 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // 예시: 0.5초마다 알림 추가
+  // 예시: 5초마다 알림 추가
   setInterval(function () {
     const timestamp = new Date().toLocaleTimeString();
     addNotification("신규 게시글이 작성됐습니다." + timestamp);
-  }, 1000);
+  }, 5000);
 
   // document에 클릭 이벤트 추가하여 드롭다운 닫기
   document.addEventListener("click", function () {
