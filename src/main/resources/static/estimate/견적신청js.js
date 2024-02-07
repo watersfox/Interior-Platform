@@ -14,20 +14,21 @@ function updateInputValue() {
     const checkedCheckbox = Array.from(checkboxes).find(checkbox => checkbox.checked);
 
     if (checkedCheckbox) {
-        buildingType = checkedCheckbox.nextElementSibling.textContent;
-        if (currentCardIndex === 2) {
-            buildDate = buildingType;
+        if (currentCardIndex === 1) {
+            buildingType = checkedCheckbox.nextElementSibling.textContent;
+        } else if (currentCardIndex === 2) {
+            buildDate = checkedCheckbox.nextElementSibling.textContent;
         } else if (currentCardIndex === 3) {
             budget = checkedCheckbox.nextElementSibling.textContent;
         }
     }
     
-        // Update address
+    // Update address
     if (currentCardIndex === 5) {
         const addressInput = document.getElementById('address-input');
         address = addressInput.value;
     }
-}  
+}
 
         function showCard(cardName) {
             const cardElement = document.getElementById('card');
