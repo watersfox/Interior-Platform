@@ -48,7 +48,7 @@ public class EstimateController {
 	        model.addAttribute("budget", budget);
 	        model.addAttribute("availableDate", availableDate);
 	        model.addAttribute("address", address);
-	        return "/estimate/view_estimate";
+	        return "estimate/view_estimate";
 	    }
 	
 	private final UserService userService;
