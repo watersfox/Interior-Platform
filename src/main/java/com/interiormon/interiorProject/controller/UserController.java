@@ -367,7 +367,7 @@ public class UserController {
         }
 
         userDTO.setPassword(newPassword);
-        userService.signUp(userDTO);
+        userService.onlySignUp(userDTO);
 
         session.removeAttribute("userDTO");
         session.invalidate();
@@ -379,6 +379,7 @@ public class UserController {
     public String deleteMember(@RequestParam(name = "password") String password, HttpSession session, Model model) {
 
         String userId = (String) session.getAttribute("userId");
+        ProfileImage profileImage = imageService.getProfileImageByUserId(userId);
 
         User user = userService.findByUserId(userId);
         if (user == null) {
@@ -388,11 +389,13 @@ public class UserController {
         if (password == null || password.trim().isEmpty() || !userService.checkUserIdAndPassword(userId, password)) {
             UserDTO userDTO = userService.getUserDTOByUserId(userId);
             model.addAttribute("userDTO", userDTO);
+            model.addAttribute("profileImage", profileImage);
             model.addAttribute("validateError", "유효하지 않은 비밀번호입니다.");
             return "member/edit-info";
         }
 
         userService.deleteUserByUserId(userId);
+        imageService.deleteProfileImageByUserUserID(userId);
 
         session.invalidate();
 

@@ -62,4 +62,10 @@ public class ImageServiceImpl implements ImageService {
     public ProfileImage getProfileImageByUserId(String userId) {
         return imageRepository.findByUser_UserId(userId);
     }
+
+    public void deleteProfileImageByUserUserID(String userId) {
+
+        imageRepository.deleteProfileImageByUserUserId(userId);
+
+    }
 }

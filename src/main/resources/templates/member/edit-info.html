@@ -117,7 +117,7 @@
             <textarea id="introduce" name="introduce" class ="_30" cols="1" rows="1" style="resize: none" placeholder="30자 이내로 작성하세요." tabindex="5" th:text="*{introduce}" th:value="*{introduce}"></textarea>
         </div>
         <div class="div10">자기소개</div>
-        <div class="div11"><img th:src="@{${profileImage.url}}" alt="Profile Image"/></div>
+        <div class="div11" th:if="${profileImage != null}"><img th:src="@{${profileImage.url}}" alt="Profile Image"/></div>
         <div class="div12">프로필 이미지</div>
         <div class="div2">
             <div class="div13"></div>
