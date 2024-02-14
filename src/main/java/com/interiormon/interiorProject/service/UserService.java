@@ -24,7 +24,7 @@ public interface UserService {
 
     boolean checkNickname(String nickname);
 
-    void setSessionNickname(HttpSession session, Model model);
+    void getSessionNickname(HttpSession session, Model model);
 
     String getUserIdByEmail(String email);
 

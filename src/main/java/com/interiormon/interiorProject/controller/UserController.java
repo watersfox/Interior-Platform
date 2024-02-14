@@ -240,13 +240,16 @@ public class UserController {
         userDTO.setPassword(password);
         userService.onlySignUp(userDTO);
 
+        session.removeAttribute("nickname");
+        session.setAttribute("nickname", userDTO.getNickname());
+
         return "home";
     }
 
     @GetMapping("member/change-pw")
     public String changePassword(HttpSession session, Model model) {
 
-        userService.setSessionNickname(session, model);
+        userService.getSessionNickname(session, model);
 
         return "member/change-pw";
     }
@@ -259,7 +262,8 @@ public class UserController {
             @RequestParam(name = "confirmPassword") String confirmPassword,
             Model model) {
 
-        userService.setSessionNickname(session, model);
+        userService.getSessionNickname(session, model);
+
         Pattern passwordPattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher passwordMatcher = passwordPattern.matcher(newPassword);
         String loggedUserId = (String)session.getAttribute("userId");
@@ -285,7 +289,7 @@ public class UserController {
 
         UserDTO userDTO = userService.getUserDTOByUserId(loggedUserId);
         userDTO.setPassword(newPassword);
-        userService.signUp(userDTO);
+        userService.onlySignUp(userDTO);
 
         session.removeAttribute("userId");
         session.removeAttribute("nickname");
