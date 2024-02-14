@@ -8,4 +8,5 @@ public interface ImageService {
 
     ProfileImage getProfileImageByUserId(String userId);
 
+    void deleteProfileImageByUserUserID(String userId);
 }

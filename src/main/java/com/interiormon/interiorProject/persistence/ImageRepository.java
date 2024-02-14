@@ -12,4 +12,6 @@ public interface ImageRepository extends JpaRepository<ProfileImage, Integer> {
 
     ProfileImage findByUser_UserId(String userId);
 
+    void deleteProfileImageByUserUserId(String userId);
+
 }
