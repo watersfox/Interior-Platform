@@ -32,7 +32,7 @@ public class EstimateController {
 
 	 @GetMapping("estimate/application")
 	 public String start(HttpSession session, Model model) {
-		 userService.setSessionNickname(session, model);
+		 userService.getSessionNickname(session, model);
 	        return "estimate/견적신청";
 	    }
 	 
