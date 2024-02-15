@@ -33,4 +33,5 @@ public class UserDTO {
 
     @Size(max = 30, message = "30자 이내로 작성하세요.")
     private String introduce;
+
 }
