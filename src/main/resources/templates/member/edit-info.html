@@ -108,80 +108,74 @@
 </div>
 <div class="div">
     <form id="editForm" action="" method="post" th:object="${userDTO}" enctype="multipart/form-data">
-    <div class="div2">
-        <div class="div3"></div>
-        <button class="div4" type="button" onclick="submitForm('/member/edit-info-ok')">회원정보 수정</button>
-    </div>
-    <div class="div2">
-        <div class="div9"></div>
-        <textarea id="introduce" name="introduce" class ="_30" cols="1" rows="1" style="resize: none" placeholder="30자 이내로 작성하세요." tabindex="5" th:text="*{introduce}" th:value="*{introduce}"></textarea>
-    </div>
-    <div class="div10">자기소개</div>
-    <div class="div11"><img th:src="@{${profileImage.url}}" alt="Profile Image"/>
-    </div>
-
-    <div class="div12">프로필 이미지</div>
-    <div class="div2">
-        <div class="div13"></div>
-        <input type="text" name="phone" id="phone" class="_1" tabindex="4" th:placeholder="*{phone}" th:value="*{phone}">
-    </div>
-    <div class="div14">전화번호</div>
-<!--    <div class="div2">-->
-<!--        <div class="div15"></div>-->
-<!--        <div class="div16">비밀번호 확인</div>-->
-<!--    </div>-->
-    <div class="div2">
-        <div class="div17"></div>
-        <input class="_8-12" name="password" id="password" type="password" placeholder="비밀번호를 입력하세요." tabindex="3">
-    </div>
-    <div class="div18">비밀번호</div>
-    <div class="div2">
-        <div class="div19"></div>
-        <input type="text" name="nickname" id="nickname" class="_2-15" tabindex="2" th:placeholder="*{nickname}" th:value="*{nickname}">
-    </div>
-    <div class="div20">닉네임</div>
-    <div class="div2">
-        <div class="div21"></div>
-        <input name="email" id="email" class="div22" tabindex="1" th:value="*{email}" readonly>
-    </div>
-        <input type="hidden" name="userId" id="userId" th:value="*{userId}">
-    <div class="div23">이메일</div>
-    <div class="div2">
-        <div class="rectangle-76"></div>
-        <div class="div24">
-            <svg
-                    class="phone"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                        d="M8.04444 17.3111C11.2444 23.6 16.4 28.7333 22.6889 31.9556L27.5778 27.0667C28.1778 26.4667 29.0667 26.2667 29.8444 26.5333C32.3333 27.3556 35.0222 27.8 37.7778 27.8C39 27.8 40 28.8 40 30.0222V37.7778C40 39 39 40 37.7778 40C16.9111 40 0 23.0889 0 2.22222C0 1 1 0 2.22222 0H10C11.2222 0 12.2222 1 12.2222 2.22222C12.2222 5 12.6667 7.66667 13.4889 10.1556C13.7333 10.9333 13.5556 11.8 12.9333 12.4222L8.04444 17.3111Z"
-                        fill="#787878"
-                />
-            </svg>
-            <div class="_0000-0000">0000-0000</div>
-            <div class="_09-00-18-00-02-0000-0000-sp-google-com">
-                월 - 금:09:00 - 18:00 (주말 제외) ㅣ 팩스 : 02-0000-0000 ㅣ 고객문의
-                : sp@google.com
-            </div>
-            <div class="_1-002-78-40913">
-                인테리어몬주식회사 대표이사 : 이민주 ㅣ 주소 : 서울특별시 영등포구
-                의사당대로 1 ㅣ 사업자등록번호 : 002-78-40913
-            </div>
+        <div class="div2">
+            <div class="div3"></div>
+            <button class="div4" type="button" onclick="submitForm('/member/edit-info-ok')">회원정보 수정</button>
         </div>
-        <div class="div5"></div>
-        <button class="div6" type="button" onclick="submitForm('/member/delete')">회원 탈퇴</button>
-        </form>
-    <form action="/image-upload'" enctype="multipart/form-data">
-    <input class="div8" type="file" name="file" accept="image/*">
-    <button class="div7" type="button">이미지 업로드</button>
+        <div class="div2">
+            <div class="div9"></div>
+            <textarea id="introduce" name="introduce" class ="_30" cols="1" rows="1" style="resize: none" placeholder="30자 이내로 작성하세요." tabindex="5" th:text="*{introduce}" th:value="*{introduce}"></textarea>
+        </div>
+        <div class="div10">자기소개</div>
+        <div class="div11" th:if="${profileImage != null}"><img th:src="@{${profileImage.url}}" alt="Profile Image"/></div>
+        <div class="div12">프로필 이미지</div>
+        <div class="div2">
+            <div class="div13"></div>
+            <input type="text" name="phone" id="phone" class="_1" tabindex="4" th:placeholder="*{phone}" th:value="*{phone}">
+        </div>
+        <div class="div14">전화번호</div>
+        <div class="div2">
+            <div class="div17"></div>
+            <input class="_8-12" name="password" id="password" type="password" placeholder="비밀번호를 입력하세요." tabindex="3">
+        </div>
+        <div class="div18">비밀번호</div>
+        <div class="div2">
+            <div class="div19"></div>
+            <input type="text" name="nickname" id="nickname" class="_2-15" tabindex="2" th:placeholder="*{nickname}" th:value="*{nickname}">
+        </div>
+        <div class="div20">닉네임</div>
+        <div class="div2">
+            <div class="div21"></div>
+            <input name="email" id="email" class="div22" tabindex="1" th:value="*{email}" readonly>
+        </div>
+        <input type="hidden" name="userId" id="userId" th:value="*{userId}">
+        <div class="div23">이메일</div>
+        <div class="div2">
+            <div class="rectangle-76"></div>
+            <div class="div24">
+                <svg
+                        class="phone"
+                        width="40"
+                        height="40"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                            d="M8.04444 17.3111C11.2444 23.6 16.4 28.7333 22.6889 31.9556L27.5778 27.0667C28.1778 26.4667 29.0667 26.2667 29.8444 26.5333C32.3333 27.3556 35.0222 27.8 37.7778 27.8C39 27.8 40 28.8 40 30.0222V37.7778C40 39 39 40 37.7778 40C16.9111 40 0 23.0889 0 2.22222C0 1 1 0 2.22222 0H10C11.2222 0 12.2222 1 12.2222 2.22222C12.2222 5 12.6667 7.66667 13.4889 10.1556C13.7333 10.9333 13.5556 11.8 12.9333 12.4222L8.04444 17.3111Z"
+                            fill="#787878"
+                    />
+                </svg>
+            </div>
+                <div class="_0000-0000">0000-0000</div>
+                <div class="_09-00-18-00-02-0000-0000-sp-google-com">
+                    월 - 금:09:00 - 18:00 (주말 제외) ㅣ 팩스 : 02-0000-0000 ㅣ 고객문의
+                    : sp@google.com
+                </div>
+                <div class="_1-002-78-40913">
+                    인테리어몬주식회사 대표이사 : 이민주 ㅣ 주소 : 서울특별시 영등포구
+                    의사당대로 1 ㅣ 사업자등록번호 : 002-78-40913
+                </div>
+        </div>
+            <div class="div5"></div>
+            <button class="div6" type="button" onclick="submitForm('/member/delete')">회원 탈퇴</button>
     </form>
-    </div>
+    <form action="/image-upload" enctype="multipart/form-data" method="post">
+        <input class="div8" type="file" name="file" accept="image/*">
+        <input class="div7" type="submit" value="이미지 업로드">
+    </form>
+</div>
     <div class="vderror" th:if="${validateError}" th:text="${validateError}"></div>
-    </div>
     <div class="div27">회원정보 수정</div>
     <div class="rectangle-4"></div>
 <script th:inline="javascript">
@@ -208,7 +202,7 @@
 
             document.getElementById('editForm').submit();
         }
-        //
+
         // if (action == "/image-upload") {
         //     document.getElementById('editForm').action = action;
         //

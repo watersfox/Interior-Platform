@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
         return isNickname;
     }
 
-    public void setSessionNickname(HttpSession session, Model model) {
+    public void getSessionNickname(HttpSession session, Model model) {
         String loggedUserId = (String) session.getAttribute("userId");
         String loggedNickname = (String) session.getAttribute("nickname");
 
