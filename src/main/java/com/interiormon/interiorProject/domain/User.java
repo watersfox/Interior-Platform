@@ -24,7 +24,6 @@ public class User {
     private String email;
     private LocalDateTime createdDate;
     private String introduce;
-//    private String imageUrl;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Inquiry> inquiries;
